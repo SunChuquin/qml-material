@@ -9,14 +9,14 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
-import Material 0.3
+import QtQuick.Controls.Styles 1.3 as QuickControlsStyle
+import Material 0.3 as Material
 
-CheckBoxStyle {
+QuickControlsStyle.CheckBoxStyle {
     id: style
 
     property color color: control.hasOwnProperty("color")
-            ? control.color : Theme.light.accentColor
+            ? control.color : Material.Theme.light.accentColor
 
     property bool darkBackground: control.hasOwnProperty("darkBackground")
             ? control.darkBackground : false
@@ -29,7 +29,7 @@ CheckBoxStyle {
 
         baselineOffset: text.baselineOffset
 
-        Label {
+        Material.Label {
             id: text
 
             anchors.centerIn: parent
@@ -38,10 +38,10 @@ CheckBoxStyle {
             ? control.darkBackground : false
 
             style: "button"
-            color: control.enabled ? darkBackground ? Theme.dark.textColor
-                                                    : Theme.light.textColor
-                                   : darkBackground ? Theme.alpha("#fff", 0.30)
-                                                    : Theme.alpha("#000", 0.26)
+            color: control.enabled ? darkBackground ? Material.Theme.dark.textColor
+                                                    : Material.Theme.light.textColor
+                                   : darkBackground ? Material.Theme.alpha("#fff", 0.30)
+                                                    : Material.Theme.alpha("#000", 0.26)
             text: control.text
         }
     }
@@ -49,7 +49,7 @@ CheckBoxStyle {
     indicator: Item {
         id: parentRect
 
-        implicitWidth: 48 * Units.dp
+        implicitWidth: 48 * Material.Units.dp
         implicitHeight: implicitWidth
 
         Rectangle {
@@ -59,21 +59,21 @@ CheckBoxStyle {
 
             property color __internalColor: control.enabled
                     ? style.color
-                    : style.darkBackground ? Theme.alpha("#fff", 0.30)
-                                           : Theme.alpha("#000", 0.26)
+                    : style.darkBackground ? Material.Theme.alpha("#fff", 0.30)
+                                           : Material.Theme.alpha("#000", 0.26)
 
-            width: 18 * Units.dp
+            width: 18 * Material.Units.dp
             height: width
-            radius: 2 * Units.dp
+            radius: 2 * Material.Units.dp
 
-            border.width: 2 * Units.dp
+            border.width: 2 * Material.Units.dp
 
             border.color: control.enabled
                     ? control.checked ? style.color
-                                      : style.darkBackground ? Theme.alpha("#fff", 0.70)
-                                                             : Theme.alpha("#000", 0.54)
-                    : style.darkBackground ? Theme.alpha("#fff", 0.30)
-                                           : Theme.alpha("#000", 0.26)
+                                      : style.darkBackground ? Material.Theme.alpha("#fff", 0.70)
+                                                             : Material.Theme.alpha("#000", 0.54)
+                    : style.darkBackground ? Material.Theme.alpha("#fff", 0.30)
+                                           : Material.Theme.alpha("#000", 0.26)
 
             color: control.checked ? __internalColor : "transparent"
 
@@ -101,7 +101,7 @@ CheckBoxStyle {
 
                 opacity: control.checked ? 1 : 0
 
-                property int thickness: 3 * Units.dp
+                property int thickness: 3 * Material.Units.dp
 
                 Behavior on opacity {
                     NumberAnimation {
@@ -119,8 +119,8 @@ CheckBoxStyle {
                         bottom: parent.bottom
                     }
 
-                    radius: 1 * Units.dp
-                    color: style.darkBackground ? Theme.light.textColor : Theme.dark.textColor
+                    radius: 1 * Material.Units.dp
+                    color: style.darkBackground ? Material.Theme.light.textColor : Material.Theme.dark.textColor
                     width: container.thickness * 2
 
                 }
@@ -131,8 +131,8 @@ CheckBoxStyle {
                         bottom: parent.bottom
                     }
 
-                    radius: 1 * Units.dp
-                    color: style.darkBackground ? Theme.light.textColor : Theme.dark.textColor
+                    radius: 1 * Material.Units.dp
+                    color: style.darkBackground ? Material.Theme.light.textColor : Material.Theme.dark.textColor
                     height: container.thickness
                 }
 

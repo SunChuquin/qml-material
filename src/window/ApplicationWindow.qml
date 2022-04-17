@@ -8,11 +8,11 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import QtQuick 2.4
+import QtQuick 2.4 as Quick
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Window 2.2
-import Material 0.3
-import Material.Extras 0.1
+import Material 0.3 as Material
+import Material.Extras 0.1 as Extra
 
 /*!
    \qmltype ApplicationWindow
@@ -77,17 +77,17 @@ Controls.ApplicationWindow {
      */
     property alias theme: __theme
 
-    AppTheme {
+    Material.AppTheme {
         id: __theme
     }
 
-    PlatformExtensions {
+    Material.PlatformExtensions {
         id: platformExtensions
         decorationColor: __toolbar.decorationColor
         window: app
     }
 
-    PageStack {
+    Material.PageStack {
         id: __pageStack
         anchors {
             left: parent.left
@@ -101,29 +101,29 @@ Controls.ApplicationWindow {
         onReplaced: __toolbar.replace(page)
     }
 
-    Toolbar {
+    Material.Toolbar {
         id: __toolbar
         clientSideDecorations: app.clientSideDecorations
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: dialogOverlayLayer
         objectName: "dialogOverlayLayer"
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: tooltipOverlayLayer
         objectName: "tooltipOverlayLayer"
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: overlayLayer
     }
 
     width: dp(800)
     height: dp(600)
 
-    Dialog {
+    Material.Dialog {
         id: errorDialog
 
         property var promise
@@ -157,7 +157,7 @@ Controls.ApplicationWindow {
         errorDialog.negativeButtonText = secondaryButtonText ? secondaryButtonText : "Close"
         errorDialog.positiveButton.visible = retry || false
 
-        errorDialog.promise = new Promises.Promise()
+        errorDialog.promise = new Quick.Promises.Promise()
         errorDialog.title = title
         errorDialog.text = text
         errorDialog.open()
@@ -168,18 +168,18 @@ Controls.ApplicationWindow {
     // Units
 
     function dp(dp) {
-        return dp * Units.dp
+        return dp * Material.Units.dp
     }
 
     function gu(gu) {
         return units.gu(gu)
     }
 
-    UnitsHelper {
+    Material.UnitsHelper {
         id: units
     }
 
-    Component.onCompleted: {
+    Quick.Component.onCompleted: {
         if (clientSideDecorations)
             flags |= Qt.FramelessWindowHint
     }

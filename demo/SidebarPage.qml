@@ -16,33 +16,32 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
+import Material 0.3 as Material
 
-Page {
+Material.Page {
     id: page
     title: "Page with right sidebar"
 
     actions: [
-        Action {
+        Material.Action {
             iconName: "action/search"
             text: "Search"
         }
     ]
 
-    Button {
+    Material.Button {
         anchors.centerIn: parent
         text: "Sub page"
         onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
     }
 
-    rightSidebar: PageSidebar {
+    rightSidebar: Material.PageSidebar {
         title: "Sidebar"
 
         width: dp(320)
 
         actions: [
-            Action {
+            Material.Action {
                 iconName: "action/delete"
                 text: "Delete"
             }

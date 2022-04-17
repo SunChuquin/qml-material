@@ -1,7 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 Item {
 
@@ -25,11 +25,11 @@ Item {
         id: column
         spacing: dp(16)
 
-        ListItem.Subheader {
+        MaterialListItem.Subheader {
             text: "Font Weights"
         }
 
-        Label {
+        Material.Label {
             font.family: "Roboto"
             font.weight: Font.Light
             text: "Roboto Light"
@@ -41,7 +41,7 @@ Item {
             }
         }
 
-        Label {
+        Material.Label {
             font.family: "Roboto"
             text: "Roboto Regular"
             font.pixelSize: dp(34)
@@ -52,7 +52,7 @@ Item {
             }
         }
 
-        Label {
+        Material.Label {
             font.family: "Roboto"
             font.weight: Font.DemiBold
             text: "Roboto Medium"
@@ -64,7 +64,7 @@ Item {
             }
         }
 
-        Label {
+        Material.Label {
             font.family: "Roboto"
             font.weight: Font.Bold
             text: "Roboto Bold"
@@ -76,7 +76,7 @@ Item {
             }
         }
 
-        ListItem.Subheader {
+        MaterialListItem.Subheader {
             text: "Label Styles"
         }
 
@@ -88,12 +88,12 @@ Item {
                     margins: dp(16)
                 }
 
-                Label {
+                Material.Label {
                     text: modelData
                     width: dp(100)
                 }
 
-                Label {
+                Material.Label {
                     style: modelData
                     text: {
                         var text = fontInfo["font"].substring(0,1).toUpperCase() + fontInfo["font"].substring(1)

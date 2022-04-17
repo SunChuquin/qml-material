@@ -9,10 +9,10 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
-import Material 0.3
+import QtQuick.Controls.Styles 1.3 as QuickControlsStyle
+import Material 0.3 as Material
 
-ApplicationWindowStyle {
+QuickControlsStyle.ApplicationWindowStyle {
 	background: Rectangle {
         color: Theme.backgroundColor
     }

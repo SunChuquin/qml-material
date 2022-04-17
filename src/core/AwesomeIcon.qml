@@ -9,7 +9,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 import "awesome.js" as Awesome
 
 /*!
@@ -29,7 +29,7 @@ Item {
     property bool valid: text.implicitWidth > 0
 
     property alias color: text.color
-    property int size: 24 * Units.dp
+    property int size: 24 * Material.Units.dp
 
     width: text.width
     height: text.height
@@ -51,7 +51,7 @@ Item {
         font.family: fontAwesome.name
         font.weight: Font.Light
         text: widget.icons.hasOwnProperty(name) ? widget.icons[name] : ""
-        color: Theme.light.iconColor
+        color: Material.Theme.light.iconColor
         style: shadow ? Text.Raised : Text.Normal
         styleColor: Qt.rgba(0,0,0,0.5)
         font.pixelSize: widget.size

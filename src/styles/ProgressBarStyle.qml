@@ -10,10 +10,9 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
-import Material 0.3
+import QtQuick.Controls.Styles 1.3 as QuickControlsStyle
 
-ProgressBarStyle {
+QuickControlsStyle.ProgressBarStyle {
     id: progressBarStyle
 
     progress: Rectangle {

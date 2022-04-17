@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3 as Material
 
 ColumnLayout {
     spacing: 0
@@ -23,47 +23,47 @@ ColumnLayout {
                 // Empty filler
                 Item { width: 1; height: 1 }
 
-                Label {
+                Material.Label {
                     Layout.alignment : Qt.AlignHCenter
                     text: "Normal"
-                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
                 }
 
-                Label {
+                Material.Label {
                     Layout.alignment : Qt.AlignHCenter
                     text: "Disabled"
-                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
                 }
 
-                Label {
+                Material.Label {
                     text: "On"
-                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
                 }
 
-                CheckBox {
+                Material.CheckBox {
                     checked: true
                     text: "On"
                     darkBackground: index == 1
                 }
 
-                CheckBox {
+                Material.CheckBox {
                     checked: true
                     enabled: false
                     text: "Disabled"
                     darkBackground: index == 1
                 }
 
-                Label {
+                Material.Label {
                     text: "Off"
-                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
                 }
 
-                CheckBox {
+                Material.CheckBox {
                     text: "Off"
                     darkBackground: index == 1
                 }
 
-                CheckBox {
+                Material.CheckBox {
                     text: "Disabled"
                     enabled: false
                     darkBackground: index == 1

@@ -9,8 +9,9 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
-import Material.Extras 0.1
+import Material 0.3 as Material
+import Material.Extras 0.1 as Extra
+import Material.ListItems 0.1 as MaterialListItem
 
 /*!
    \qmltype SimpleMenu
@@ -18,7 +19,7 @@ import Material.Extras 0.1
 
    \brief A list item that opens a dropdown menu when tapped.
  */
-Subtitled {
+MaterialListItem.Subtitled {
     id: listItem
 
     property var model
@@ -26,18 +27,18 @@ Subtitled {
 
     subText: listView.currentItem.text
 
-    onClicked: menu.open(listItem, 16 * Units.dp, 0)
+    onClicked: menu.open(listItem, 16 * Material.Units.dp, 0)
 
     property int __maxWidth: 0
 
-    Label {
+    Material.Label {
         id: hiddenLabel
         style: "subheading"
         visible: false
-        color: darkBackground ? Theme.dark.textColor : Theme.light.textColor
+        color: darkBackground ? Material.Theme.dark.textColor : Material.Theme.light.textColor
 
         onContentWidthChanged: {
-            __maxWidth = Math.max(contentWidth + 33 * Units.dp, __maxWidth)
+            __maxWidth = Math.max(contentWidth + 33 * Material.Units.dp, __maxWidth)
         }
     }
 
@@ -52,17 +53,17 @@ Subtitled {
         }
     }
 
-    Dropdown {
+    Material.Dropdown {
         id: menu
 
         anchor: Item.TopLeft
 
-        width: Math.max(56 * 2 * Units.dp, Math.min(listItem.width - 32 * Units.dp, __maxWidth))
-        height: Math.min(10 * 48 * Units.dp + 16 * Units.dp, model.length * 48 * Units.dp + 16 * Units.dp)
+        width: Math.max(56 * 2 * Material.Units.dp, Math.min(listItem.width - 32 * Material.Units.dp, __maxWidth))
+        height: Math.min(10 * 48 * Material.Units.dp + 16 * Material.Units.dp, model.length * 48 * Material.Units.dp + 16 * Material.Units.dp)
 
         Rectangle {
             anchors.fill: parent
-            radius: 2 * Units.dp
+            radius: 2 * Material.Units.dp
         }
 
         ListView {
@@ -72,7 +73,7 @@ Subtitled {
                 left: parent.left
                 right: parent.right
                 top: parent.top
-                topMargin: 8 * Units.dp
+                topMargin: 8 * Material.Units.dp
             }
 
             interactive: false

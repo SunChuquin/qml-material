@@ -10,7 +10,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 import Material.Extras 0.1
 
 /*!
@@ -23,7 +23,7 @@ MouseArea {
     id: view
 
     clip: true
-    hoverEnabled: Device.hoverEnabled
+    hoverEnabled: Material.Device.hoverEnabled
     z: 2
 
     property int startRadius: circular ? width/10 : width/6
@@ -35,7 +35,7 @@ MouseArea {
     property bool circular: false
     property bool centered: false
 
-    property int focusWidth: width - 32 * Units.dp
+    property int focusWidth: width - 32 * Material.Units.dp
     property bool focused
     property color focusColor: "transparent"
 
@@ -88,7 +88,7 @@ MouseArea {
 
         anchors.fill: parent
 
-        color: Theme.isDarkColor(focusColor) && focusColor.a > 0
+        color: Material.Theme.isDarkColor(focusColor) && focusColor.a > 0
                 ? Qt.rgba(0,0,0,0.2) : Qt.rgba(0,0,0,0.1)
 
         opacity: showFocus && focused ? 1 : 0
@@ -105,7 +105,7 @@ MouseArea {
 
         width: focused
                 ? focusedState ? focusWidth
-                               : Math.min(parent.width - 8 * Units.dp, focusWidth + 12 * Units.dp)
+                               : Math.min(parent.width - 8 * Material.Units.dp, focusWidth + 12 * Material.Units.dp)
                 : parent.width/5
         height: width
 

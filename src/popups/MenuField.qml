@@ -20,7 +20,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
 
-import Material 0.3
+import Material 0.3 as Material
 import Material.ListItems 0.1
 
 /*!
@@ -32,13 +32,13 @@ import Material.ListItems 0.1
 Item {
     id: field
 
-    implicitHeight: hasHelperText ? helperTextLabel.y + helperTextLabel.height + 4 * Units.dp
-                                  : underline.y + 8 * Units.dp
+    implicitHeight: hasHelperText ? helperTextLabel.y + helperTextLabel.height + 4 * Material.Units.dp
+                                  : underline.y + 8 * Material.Units.dp
     implicitWidth: spinBoxContents.implicitWidth
 
     activeFocusOnTab: true
 
-    property color accentColor: Theme.accentColor
+    property color accentColor: Material.Theme.accentColor
     property color errorColor: "#F44336"
 
     property alias model: listView.model
@@ -61,7 +61,7 @@ Item {
 
     signal itemSelected(int index)
 
-    Ink {
+    Material.Ink {
         anchors.fill: parent
         onClicked: {
             listView.positionViewAtIndex(listView.currentIndex, ListView.Center)
@@ -73,24 +73,24 @@ Item {
     Item {
         id: spinBox
 
-        height: 24 * Units.dp
+        height: 24 * Material.Units.dp
         width: parent.width
 
         y: {
             if(!floatingLabel)
-                return 16 * Units.dp
+                return 16 * Material.Units.dp
             if(floatingLabel && !hasHelperText)
-                return 40 * Units.dp
-            return 28 * Units.dp
+                return 40 * Material.Units.dp
+            return 28 * Material.Units.dp
         }
 
         RowLayout {
             id: spinBoxContents
 
             height: parent.height
-            width: parent.width + 5 * Units.dp
+            width: parent.width + 5 * Material.Units.dp
 
-            Label {
+            Material.Label {
                 id: label
 
                 Layout.fillWidth: true
@@ -101,19 +101,19 @@ Item {
                 elide: Text.ElideRight
             }
 
-            Icon {
+            Material.Icon {
                 id: dropDownIcon
 
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-                Layout.preferredWidth: 24 * Units.dp
-                Layout.preferredHeight: 24 * Units.dp
+                Layout.preferredWidth: 24 * Material.Units.dp
+                Layout.preferredHeight: 24 * Material.Units.dp
 
                 name: "navigation/arrow_drop_down"
-                size: 24 * Units.dp
+                size: 24 * Material.Units.dp
             }
         }
 
-        Dropdown {
+        Material.Dropdown {
             id: menu
 
             anchor: Item.TopLeft
@@ -122,7 +122,7 @@ Item {
 
             //If there are more than max items, show an extra half item so
             // it's clear the user can scroll
-            height: Math.min(maxVisibleItems*48 * Units.dp + 24 * Units.dp, listView.contentHeight)
+            height: Math.min(maxVisibleItems*48 * Material.Units.dp + 24 * Material.Units.dp, listView.contentHeight)
 
             ListView {
                 id: listView
@@ -145,38 +145,38 @@ Item {
                 }
             }
 
-            Scrollbar {
+            Material.Scrollbar {
                 flickableItem: listView
             }
         }
     }
 
-    Label {
+    Material.Label {
         id: fieldPlaceholder
 
         text: field.placeholderText
         visible: floatingLabel
 
-        font.pixelSize: 12 * Units.dp
+        font.pixelSize: 12 * Material.Units.dp
 
         anchors.bottom: spinBox.top
-        anchors.bottomMargin: 8 * Units.dp
+        anchors.bottomMargin: 8 * Material.Units.dp
 
-        color: Theme.light.hintColor
+        color: Material.Theme.light.hintColor
     }
 
     Rectangle {
         id: underline
 
-        color: field.hasError ? field.errorColor : field.activeFocus ? field.accentColor : Theme.light.hintColor
+        color: field.hasError ? field.errorColor : field.activeFocus ? field.accentColor : Material.Theme.light.hintColor
 
-        height: field.activeFocus ? 2 * Units.dp : 1 * Units.dp
+        height: field.activeFocus ? 2 * Material.Units.dp : 1 * Material.Units.dp
 
         anchors {
             left: parent.left
             right: parent.right
             top: spinBox.bottom
-            topMargin: 8 * Units.dp
+            topMargin: 8 * Material.Units.dp
         }
 
         Behavior on height {
@@ -188,19 +188,19 @@ Item {
         }
     }
 
-    Label {
+    Material.Label {
         id: helperTextLabel
 
         anchors {
             left: parent.left
             right: parent.right
             top: underline.top
-            topMargin: 4 * Units.dp
+            topMargin: 4 * Material.Units.dp
         }
 
         visible: hasHelperText
-        font.pixelSize: 12 * Units.dp
-        color: field.hasError ? field.errorColor : Qt.darker(Theme.light.hintColor)
+        font.pixelSize: 12 * Material.Units.dp
+        color: field.hasError ? field.errorColor : Qt.darker(Material.Theme.light.hintColor)
 
         Behavior on color {
             ColorAnimation { duration: 200 }

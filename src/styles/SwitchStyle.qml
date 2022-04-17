@@ -9,21 +9,21 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
-import Material 0.3
+import QtQuick.Controls.Styles 1.3 as QuickControlsStyle
+import Material 0.3 as Material
 
-SwitchStyle {
+QuickControlsStyle.SwitchStyle {
     id: style
 
     property color color: control.hasOwnProperty("color")
-            ? control.color : Theme.light.accentColor
+            ? control.color : Material.Theme.light.accentColor
 
     property bool darkBackground: control.hasOwnProperty("darkBackground")
             ? control.darkBackground : false
 
-    handle: View {
-        width: 22 * Units.dp
-        height: 22 * Units.dp
+    handle: Material.View {
+        width: 22 * Material.Units.dp
+        height: 22 * Material.Units.dp
 
         radius: height/2
 
@@ -34,19 +34,19 @@ SwitchStyle {
     }
 
     groove: Item {
-        width: 40 * Units.dp
-        height: 22 * Units.dp
+        width: 40 * Material.Units.dp
+        height: 22 * Material.Units.dp
 
         Rectangle {
 
             anchors.centerIn: parent
 
-            width: parent.width - 2 * Units.dp
-            height: 16 * Units.dp
+            width: parent.width - 2 * Material.Units.dp
+            height: 16 * Material.Units.dp
 
             radius: height/2
 
-            color: control.enabled ? control.checked ? Theme.alpha(style.color, 0.5)
+            color: control.enabled ? control.checked ? Material.Theme.alpha(style.color, 0.5)
                                                      : darkBackground ? Qt.rgba(1, 1, 1, 0.26)
                                                                       : Qt.rgba(0, 0, 0, 0.30)
                                    : darkBackground ? Qt.rgba(1, 1, 1, 0.12)

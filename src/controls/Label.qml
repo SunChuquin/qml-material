@@ -9,7 +9,8 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
+import Material.Extras 0.1
 
 /*!
    \qmltype Label
@@ -101,8 +102,8 @@ Text {
 
     property var fontInfo: fontStyles[style]
 
-    font.pixelSize: (!Device.isMobile && fontInfo.size_desktop
-            ? fontInfo.size_desktop : fontInfo.size) * Units.dp
+    font.pixelSize: (!Material.Device.isMobile && fontInfo.size_desktop
+            ? fontInfo.size_desktop : fontInfo.size) * Material.Units.dp
     font.family: "Roboto"
     font.weight: {
         var weight = fontInfo.font
@@ -118,7 +119,7 @@ Text {
 
     font.capitalization: style == "button" ? Font.AllUppercase : Font.MixedCase
 
-    color: Theme.light.textColor
+    color: Material.Theme.light.textColor
 
 
 }

@@ -10,7 +10,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype Page
@@ -77,7 +77,7 @@ FocusScope {
        page in the page stack. However, you can replace it with your own action,
        for example, an icon to open a navigation drawer when on your root page.
      */
-    property Action backAction: Action {
+    property Material.Action backAction: Material.Action {
         name: "Back"
         iconName: "navigation/arrow_back"
         onTriggered: page.pop()
@@ -88,7 +88,7 @@ FocusScope {
        The background color of the page. Defaults to the global background color
        defined in \l Theme::backgroundColor
      */
-    property color backgroundColor: Theme.backgroundColor
+    property color backgroundColor: Material.Theme.backgroundColor
 
     /*!
        \internal
@@ -220,7 +220,7 @@ FocusScope {
         }
     }
 
-    ActionBar {
+    Material.ActionBar {
         id: __actionBar
 
         title: page.title

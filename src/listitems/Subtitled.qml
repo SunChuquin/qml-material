@@ -11,7 +11,8 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.3
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 /*!
    \qmltype Subtitled
@@ -19,10 +20,10 @@ import Material 0.3
 
    \brief A list item with a two or three lines of text and optional primary and secondary actions.
  */
-BaseListItem {
+MaterialListItem.BaseListItem {
     id: listItem
 
-    height: maximumLineCount == 2 ? 72 * Units.dp : 88 * Units.dp
+    height: maximumLineCount == 2 ? 72 * Material.Units.dp : 88 * Material.Units.dp
 
     property alias text: label.text
     property alias subText: subLabel.text
@@ -53,19 +54,19 @@ BaseListItem {
 
         columns: 4
         rows: 1
-        columnSpacing: 16 * Units.dp
+        columnSpacing: 16 * Material.Units.dp
 
         Item {
             id: actionItem
 
-            Layout.preferredWidth: 40 * Units.dp
+            Layout.preferredWidth: 40 * Material.Units.dp
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
             Layout.column: 1
 
             visible: children.length > 1 || icon.valid
 
-            Icon {
+            Material.Icon {
                 id: icon
 
                 anchors {
@@ -74,9 +75,9 @@ BaseListItem {
                 }
 
                 visible: valid
-                color: listItem.selected ? Theme.primaryColor
-                        : darkBackground ? Theme.dark.iconColor : Theme.light.iconColor
-                size: 24 * Units.dp
+                color: listItem.selected ? Material.Theme.primaryColor
+                        : darkBackground ? Material.Theme.dark.iconColor : Material.Theme.light.iconColor
+                size: 24 * Material.Units.dp
             }
         }
 
@@ -85,14 +86,14 @@ BaseListItem {
             Layout.fillWidth: true
             Layout.column: 2
 
-            spacing: 3 * Units.dp
+            spacing: 3 * Material.Units.dp
 
             RowLayout {
                 Layout.fillWidth: true
 
-                spacing: 8 * Units.dp
+                spacing: 8 * Material.Units.dp
 
-                Label {
+                Material.Label {
                     id: label
 
                     Layout.alignment: Qt.AlignVCenter
@@ -100,16 +101,16 @@ BaseListItem {
 
                     elide: Text.ElideRight
                     style: "subheading"
-                    color: darkBackground ? Theme.dark.textColor : Theme.light.textColor
+                    color: darkBackground ? Material.Theme.dark.textColor : Material.Theme.light.textColor
                 }
 
-                Label {
+                Material.Label {
                     id: valueLabel
 
                     Layout.alignment: Qt.AlignVCenter
                     Layout.preferredWidth: visible ? implicitWidth : 0
 
-                    color: darkBackground ? Theme.dark.subTextColor : Theme.light.subTextColor
+                    color: darkBackground ? Material.Theme.dark.subTextColor : Material.Theme.light.subTextColor
                     elide: Text.ElideRight
                     horizontalAlignment: Qt.AlignHCenter
                     style: "body1"
@@ -126,13 +127,13 @@ BaseListItem {
                 property bool showing: visibleChildren.length > 0
             }
 
-            Label {
+            Material.Label {
                 id: subLabel
 
                 Layout.fillWidth: true
                 Layout.preferredHeight: implicitHeight * maximumLineCount/lineCount
 
-                color: darkBackground ? Theme.dark.subTextColor : Theme.light.subTextColor
+                color: darkBackground ? Material.Theme.dark.subTextColor : Material.Theme.light.subTextColor
                 elide: Text.ElideRight
                 wrapMode: Text.WordWrap
                 style: "body1"

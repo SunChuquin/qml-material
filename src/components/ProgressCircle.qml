@@ -21,7 +21,7 @@ import QtQuick 2.4
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles 1.3 as Styles
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype ProgressCircle
@@ -36,16 +36,16 @@ Controls.ProgressBar {
        The color for the progress circle. By default this is
        the primary color defined in \l Theme::primaryColor
      */
-    property color color: Theme.primaryColor
+    property color color: Material.Theme.primaryColor
 
     /*!
        The thickness of the progress circle's stroke,
        3 dp by default
      */
-    property real dashThickness: 3 * Units.dp
+    property real dashThickness: 3 * Material.Units.dp
 
-    width: 32 * Units.dp
-    height: 32 * Units.dp
+    width: 32 * Material.Units.dp
+    height: 32 * Material.Units.dp
 
     indeterminate: true
 
@@ -83,10 +83,10 @@ Controls.ProgressBar {
 
                 Connections {
                     target: control
-                    onColorChanged: canvas.requestPaint()
-                    onValueChanged: canvas.requestPaint()
-                    onDashThicknessChanged: canvas.requestPaint()
-                    onIndeterminateChanged:
+                    function onColorChanged() { canvas.requestPaint() }
+                    function onValueChanged() { canvas.requestPaint() }
+                    function onDashThicknessChanged() { canvas.requestPaint() }
+                    function onIndeterminateChanged()
                     {
                         if(control.indeterminate)
                         {

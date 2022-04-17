@@ -9,7 +9,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 import Material.Extras 0.1
 
 /*!
@@ -26,7 +26,7 @@ import Material.Extras 0.1
    See the Material Design guidelines for more details:
    http://www.google.com/design/spec/components/tooltips.html
  */
-PopupBase {
+Material.PopupBase {
     id: popover
 
     visible: view.opacity > 0
@@ -36,7 +36,7 @@ PopupBase {
 
     property alias backgroundColor: view.backgroundColor
 
-    property int padding: 16 * Units.dp
+    property int padding: 16 * Material.Units.dp
 
     default property alias data: view.data
 
@@ -95,11 +95,11 @@ PopupBase {
         parent.currentOverlay = null
     }
 
-    View {
+    Material.View {
         id: view
 
         elevation: 2
-        radius: 2 * Units.dp
+        radius: 2 * Material.Units.dp
 
         anchors {
             left: parent.left

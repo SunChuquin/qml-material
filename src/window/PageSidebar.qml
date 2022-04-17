@@ -10,7 +10,7 @@
 
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype PageSidebar
@@ -19,7 +19,7 @@ import Material 0.3
    \brief Represents a split sidebar in a page, with its own title, actions, and color
    in the action bar.
  */
-Page {
+Material.Page {
     id: pageSidebar
 
     default property alias sidebar: sidebar.data
@@ -39,7 +39,7 @@ Page {
 
     height: parent.height
 
-    Sidebar {
+    Material.Sidebar {
         id: sidebar
 
         anchors.fill: parent

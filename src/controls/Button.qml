@@ -11,7 +11,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype Button
@@ -65,7 +65,7 @@ Controls.Button {
     /*!
        Set to \c true if the button has a dark background color
      */
-    property bool darkButton: Theme.isDarkColor(backgroundColor)
+    property bool darkButton: Material.Theme.isDarkColor(backgroundColor)
 
     /*!
        Set to \c true if the button is on a dark background
@@ -81,7 +81,7 @@ Controls.Button {
        The text color of the button. By default, this is calculated based on the background color,
        but it can be customized to the theme's primary color or another color.
      */
-    property color textColor: button.darkButton ? Theme.dark.textColor : Theme.light.textColor
+    property color textColor: button.darkButton ? Material.Theme.dark.textColor : Material.Theme.light.textColor
 
     style: MaterialStyle.ButtonStyle {}
 }

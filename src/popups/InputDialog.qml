@@ -9,7 +9,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype InputDialog
@@ -17,7 +17,7 @@ import Material 0.3
 
    \brief A dialog with a single text field input.
  */
-Dialog {
+Material.Dialog {
     id: inputDialog
 
     hasActions: true
@@ -33,7 +33,7 @@ Dialog {
     property alias placeholderText: textField.placeholderText
     property alias value: textField.text
 
-    TextField {
+    Material.TextField {
         id: textField
 
         anchors {

@@ -9,7 +9,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype ThinDivider
@@ -25,6 +25,6 @@ Rectangle {
 
     property bool darkBackground
 
-    color: darkBackground ? Theme.dark.hintColor : Theme.light.hintColor
+    color: darkBackground ? Material.Theme.dark.hintColor : Material.Theme.light.hintColor
     height: 1
 }

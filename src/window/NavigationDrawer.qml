@@ -10,7 +10,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype NavigationDrawer
@@ -18,14 +18,14 @@ import Material 0.3
 
    \brief The navigation drawer slides in from the left and is a common pattern in apps.
  */
-PopupBase {
+Material.PopupBase {
     id: navDrawer
     objectName: "navDrawer"
 
     overlayLayer: "dialogOverlayLayer"
     overlayColor: Qt.rgba(0, 0, 0, 0.3)
 
-    width: Math.min(parent.width - 1 * Device.gridUnit * Units.dp, 5 * Device.gridUnit * Units.dp)
+    width: Math.min(parent.width - 1 * Material.Device.gridUnit * Material.Units.dp, 5 * Material.Device.gridUnit * Material.Units.dp)
 
     anchors {
         left: mode === "left" ? parent.left : undefined
@@ -33,8 +33,8 @@ PopupBase {
         top: parent.top
         bottom: parent.bottom
 
-        leftMargin: showing ? 0 : -width - 10 * Units.dp
-        rightMargin: showing ? 0 : -width - 10 * Units.dp
+        leftMargin: showing ? 0 : -width - 10 * Material.Units.dp
+        rightMargin: showing ? 0 : -width - 10 * Material.Units.dp
 
         Behavior on leftMargin {
             NumberAnimation { duration: 200 }
@@ -48,21 +48,21 @@ PopupBase {
 
     property alias enabled: action.visible
 
-    readonly property Action action: action
+    readonly property Material.Action action: action
 
     onEnabledChanged: {
         if (!enabled)
             close()
     }
 
-    Action {
+    Material.Action {
         id: action
         iconName: "navigation/menu"
         name: "Navigation Drawer"
         onTriggered: navDrawer.toggle()
     }
 
-    View {
+    Material.View {
         anchors.fill: parent
         fullHeight: true
         elevation: 3

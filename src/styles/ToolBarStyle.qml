@@ -9,22 +9,22 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
-import Material 0.3
+import QtQuick.Controls.Styles 1.3 as QuickControlsStyle
+import Material 0.3 as Material
 
-ToolBarStyle {
+QuickControlsStyle.ToolBarStyle {
 	padding {
-        left: 16 * Units.dp
-        right: 16 * Units.dp
-        top: 0 * Units.dp
-        bottom: 0 * Units.dp
+        left: 16 * Material.Units.dp
+        right: 16 * Material.Units.dp
+        top: 0 * Material.Units.dp
+        bottom: 0 * Material.Units.dp
     }
-    background: View {
-        implicitHeight: Device.type == Device.phone || Device.type === Device.phablet
-                ? 48 * Units.dp : Device.type == Device.tablet ? 56 * Units.dp : 64 * Units.dp
+    background: Material.View {
+        implicitHeight: Material.Device.type == Material.Device.phone || Material.Device.type === Material.Device.phablet
+                ? 48 * Material.Units.dp : Material.Device.type == Material.Device.tablet ? 56 * Material.Units.dp : 64 * Material.Units.dp
         fullWidth: true
         elevation: 2
 
-        backgroundColor: Theme.primaryColor
+        backgroundColor: Material.Theme.primaryColor
     }
 }

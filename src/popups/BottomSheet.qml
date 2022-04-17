@@ -10,7 +10,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype BottomSheet
@@ -19,7 +19,7 @@ import Material 0.3
    \brief A bottom sheet is a sheet of paper that slides up from the bottom edge
    of the screen and presents a set of clear and simple actions.
  */
-PopupBase {
+Material.PopupBase {
     id: bottomSheet
 
     /*!
@@ -55,7 +55,7 @@ PopupBase {
         bottomMargin: (bottomSheet.percentOpen - 1) * height
     }
 
-    View {
+    Material.View {
         id:containerView
 
         anchors.fill: parent

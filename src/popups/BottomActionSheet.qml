@@ -9,8 +9,8 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
-import Material.ListItems 0.1 as ListItem
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 /*!
    \qmltype BottomActionSheet
@@ -19,7 +19,8 @@ import Material.ListItems 0.1 as ListItem
    \brief Represents a bottom sheet displaying a list of actions with an optional title.
 
  */
-BottomSheet {
+Material.BottomSheet
+{
     id: bottomSheet
 
     property list<Action> actions
@@ -34,11 +35,11 @@ BottomSheet {
 
         anchors.fill: parent
 
-        ListItem.Subheader {
+        MaterialListItem.Subheader {
             id: header
             text: title
             visible: title !== ""
-            height: 56 * Units.dp
+            height: 56 * Material.Units.dp
             style: "subheading"
             backgroundColor: "white"
             elevation: listView.atYBeginning ? 0 : 1
@@ -61,8 +62,8 @@ BottomSheet {
 
                 interactive: bottomSheet.height < bottomSheet.implicitHeight
 
-                topMargin: title !== "" ? 0 : 8 * Units.dp
-                bottomMargin: 8 * Units.dp
+                topMargin: title !== "" ? 0 : 8 * Material.Units.dp
+                bottomMargin: 8 * Material.Units.dp
 
                 contentWidth: width
                 contentHeight: subColumn.height
@@ -77,7 +78,7 @@ BottomSheet {
                         delegate: Column {
                             width: parent.width
 
-                            ListItem.Standard {
+                            MaterialListItem.Standard {
                                 id: listItem
                                 text: modelData.name
                                 iconSource: modelData.iconSource
@@ -90,7 +91,7 @@ BottomSheet {
                                 }
                             }
 
-                            ListItem.Divider {
+                            MaterialListItem.Divider {
                                 visible: modelData.hasDividerAfter
                             }
                         }
@@ -98,7 +99,7 @@ BottomSheet {
                 }
             }
 
-            Scrollbar {
+            Material.Scrollbar {
                 flickableItem: listView
             }
         }

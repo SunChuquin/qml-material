@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.2 as Material
 
 Item {
     implicitHeight: palette.height
@@ -45,39 +45,39 @@ Item {
                 Rectangle {
                     width: dp(300)
                     height: dp(126)
-                    color: Palette.colors[currentColor]["500"]
+                    color: Material.Palette.colors[currentColor]["500"]
 
-                    Label {
+                    Material.Label {
                         anchors.top: parent.top
                         anchors.left: parent.left
                         anchors.margins: dp(16)
                         text: modelData
                         style: "body2"
-                        color: Theme.lightDark(parent.color,
-                                               Theme.light.textColor,
-                                               Theme.dark.textColor)
+                        color: Material.Theme.lightDark(parent.color,
+                                               Material.Theme.light.textColor,
+                                               Material.Theme.dark.textColor)
                     }
 
-                    Label {
+                    Material.Label {
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
                         anchors.margins: dp(16)
                         text: "500"
                         style: "body2"
-                        color: Theme.lightDark(parent.color,
-                                               Theme.light.textColor,
-                                               Theme.dark.textColor)
+                        color: Material.Theme.lightDark(parent.color,
+                                               Material.Theme.light.textColor,
+                                               Material.Theme.dark.textColor)
                     }
 
-                    Label {
+                    Material.Label {
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
                         anchors.margins: dp(16)
-                        text: Palette.colors[currentColor]["500"]
+                        text: Material.Palette.colors[currentColor]["500"]
                         style: "body2"
-                        color: Theme.lightDark(parent.color,
-                                               Theme.light.textColor,
-                                               Theme.dark.textColor)
+                        color: Material.Theme.lightDark(parent.color,
+                                               Material.Theme.light.textColor,
+                                               Material.Theme.dark.textColor)
                     }
                 }
 
@@ -90,28 +90,28 @@ Item {
                         Rectangle {
                             width: dp(300)
                             height: dp(46)
-                            color: Palette.colors[currentColor][modelData]
+                            color: Material.Palette.colors[currentColor][modelData]
 
-                            Label {
+                            Material.Label {
                                 anchors.left: parent.left
                                 anchors.margins: dp(16)
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: modelData
                                 style: "body2"
-                                color: Theme.lightDark(parent.color,
-                                                       Theme.light.textColor,
-                                                       Theme.dark.textColor)
+                                color: Material.Theme.lightDark(parent.color,
+                                                       Material.Theme.light.textColor,
+                                                       Material.Theme.dark.textColor)
                             }
 
-                            Label {
+                            Material.Label {
                                 anchors.right: parent.right
                                 anchors.margins: dp(16)
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: Palette.colors[currentColor][modelData]
+                                text: Material.Palette.colors[currentColor][modelData]
                                 style: "body2"
-                                color: Theme.lightDark(parent.color,
-                                                       Theme.light.textColor,
-                                                       Theme.dark.textColor)
+                                color: Material.Theme.lightDark(parent.color,
+                                                       Material.Theme.light.textColor,
+                                                       Material.Theme.dark.textColor)
                             }
                         }
                     }
@@ -119,7 +119,7 @@ Item {
 
                 ColumnLayout {
                     spacing: 0
-                    visible: typeof Palette.colors[currentColor]["A100"] != 'undefined'
+                    visible: typeof Material.Palette.colors[currentColor]["A100"] != 'undefined'
 
                     Repeater {
                         model: visible ? ["A100", "A200", "A400", "A700"] : 0
@@ -127,28 +127,28 @@ Item {
                         Rectangle {
                             width: dp(300)
                             height: dp(46)
-                            color: Palette.colors[currentColor][modelData]
+                            color: Material.Palette.colors[currentColor][modelData]
 
-                            Label {
+                            Material.Label {
                                 anchors.left: parent.left
                                 anchors.margins: dp(16)
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: modelData
                                 style: "body2"
-                                color: Theme.lightDark(parent.color,
-                                                       Theme.light.textColor,
-                                                       Theme.dark.textColor)
+                                color: Material.Theme.lightDark(parent.color,
+                                                       Material.Theme.light.textColor,
+                                                       Material.Theme.dark.textColor)
                             }
 
-                            Label {
+                            Material.Label {
                                 anchors.right: parent.right
                                 anchors.margins: dp(16)
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: Palette.colors[currentColor][modelData]
+                                text: Material.Palette.colors[currentColor][modelData]
                                 style: "body2"
-                                color: Theme.lightDark(parent.color,
-                                                       Theme.light.textColor,
-                                                       Theme.dark.textColor)
+                                color: Material.Theme.lightDark(parent.color,
+                                                       Material.Theme.light.textColor,
+                                                       Material.Theme.dark.textColor)
                             }
                         }
                     }

@@ -11,7 +11,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 import Material.Extras 0.1
 import QtQuick.Controls 1.3 as QuickControls
 import QtQuick.Controls.Styles 1.3
@@ -19,7 +19,7 @@ import QtQuick.Controls.Styles 1.3
 FocusScope {
     id: timePicker
 
-    width: 300 * Units.dp
+    width: 300 * Material.Units.dp
     height: content.height
 
     /*!
@@ -30,7 +30,7 @@ FocusScope {
     /*!
        The visual padding around the clock element
      */
-    property real clockPadding: 24 * Units.dp
+    property real clockPadding: 24 * Material.Units.dp
 
     /*!
        Set to \c true if the time picker should first show the hours. Defaults to true
@@ -125,15 +125,15 @@ FocusScope {
         Rectangle {
             id: headerView
             width: parent.width
-            height: 88 * Units.dp
-            color: Theme.accentColor
+            height: 88 * Material.Units.dp
+            color: Material.Theme.accentColor
 
             Row {
                 id: timeContainer
                 anchors.centerIn: parent
-                height: 48 * Units.dp
+                height: 48 * Material.Units.dp
 
-                Label {
+                Material.Label {
                     id:hoursLabel
                     style: "display3"
                     color: isHours ? "white" : "#99ffffff"
@@ -150,14 +150,14 @@ FocusScope {
                     }
                 }
 
-                Label {
+                Material.Label {
                     style: "display3"
                     color: "white"
                     text:":"
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
-                Label {
+                Material.Label {
                     id: minutesLabel
                     style: "display3"
                     color: !isHours ? "white" : "#99ffffff"
@@ -184,12 +184,12 @@ FocusScope {
                 anchors {
                     bottom: timeContainer.bottom
                     left: timeContainer.right
-                    leftMargin: 12 * Units.dp
+                    leftMargin: 12 * Material.Units.dp
                 }
 
-                spacing: 4 * Units.dp
+                spacing: 4 * Material.Units.dp
 
-                Label {
+                Material.Label {
                     style: "subheading"
                     font.weight: Font.DemiBold
                     color: amPmPicker.isAm ? "white" : "#99ffffff"
@@ -201,7 +201,7 @@ FocusScope {
                     }
                 }
 
-                Label {
+                Material.Label {
                     style: "subheading"
                     font.weight: Font.DemiBold
                     color: !amPmPicker.isAm ? "white" : "#99ffffff"
@@ -232,16 +232,16 @@ FocusScope {
                 Rectangle {
                     id: centerPoint
                     anchors.centerIn: parent
-                    color: Theme.accentColor
-                    width: 8 * Units.dp
-                    height: 8 * Units.dp
+                    color: Material.Theme.accentColor
+                    width: 8 * Material.Units.dp
+                    height: 8 * Material.Units.dp
                     radius: width / 2
                 }
 
                 Rectangle {
                     id: pointer
-                    color: Theme.accentColor
-                    width: 2 * Units.dp
+                    color: Material.Theme.accentColor
+                    width: 2 * Material.Units.dp
                     height: circle.height / 2 - clockPadding
                     y: clockPadding
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -299,9 +299,9 @@ FocusScope {
                     id: pathViewHighlight
                     Rectangle {
                         id: highlight
-                        width: 40 * Units.dp
-                        height: 40 * Units.dp
-                        color: Theme.accentColor
+                        width: 40 * Material.Units.dp
+                        height: 40 * Material.Units.dp
+                        color: Material.Theme.accentColor
                         radius: width / 2
                     }
                 }
@@ -310,13 +310,13 @@ FocusScope {
                     id: pathViewItem
                     Rectangle {
                         id: rectangle
-                        width: !isHours && modelData % 5 == 0 ? 12 * Units.dp : isHours ? 30 * Units.dp : 8 * Units.dp
-                        height: !isHours && modelData % 5 == 0 ? 12 * Units.dp : isHours ? 30 * Units.dp : 8 * Units.dp
+                        width: !isHours && modelData % 5 == 0 ? 12 * Material.Units.dp : isHours ? 30 * Material.Units.dp : 8 * Material.Units.dp
+                        height: !isHours && modelData % 5 == 0 ? 12 * Material.Units.dp : isHours ? 30 * Material.Units.dp : 8 * Material.Units.dp
                         color: "transparent"
 
                         property bool isSelected: false
 
-                        Label {
+                        Material.Label {
                             anchors.centerIn: parent
                             text:{
                                 var model = isHours ? hoursPathView.model : minutesPathView.model

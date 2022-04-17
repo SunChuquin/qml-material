@@ -11,7 +11,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Layouts 1.1
-import Material 0.3
+import Material 0.3 as Material
 
 
 /*!
@@ -20,7 +20,7 @@ import Material 0.3
 
    \brief Provides the container used to hold the action bar of pages.
 */
-View {
+Material.View {
     id: toolbar
 
     anchors {
@@ -44,8 +44,8 @@ View {
         return height
     }
     property int targetHeight: actionBarHeight
-    property int maxActionCount: Device.type === Device.desktop
-                                 ? 5 : Device.type === Device.tablet ? 4 : 3
+    property int maxActionCount: Material.Device.type === Material.Device.desktop
+                                 ? 5 : Material.Device.type === Material.Device.tablet ? 4 : 3
     property bool clientSideDecorations: false
     property string color: "white"
     property var page
@@ -53,15 +53,15 @@ View {
 
     property color decorationColor: page && page.actionBar
             ? page.actionBar.decorationColor
-            : Theme.primaryDarkColor
+            : Material.Theme.primaryDarkColor
 
     opacity: page && page.actionBar.hidden ? 0 : 1
 
     backgroundColor: page ? page.actionBar.backgroundColor.a === 0
                             ? page.backgroundColor : page.actionBar.backgroundColor
-                          : Theme.primaryColor
+                          : Material.Theme.primaryColor
 
-    implicitHeight: 1 * Device.gridUnit * Units.dp
+    implicitHeight: 1 * Material.Device.gridUnit * Material.Units.dp
     height: targetHeight
     elevation: backgroundColor === page.color ? 0 : page.actionBar.elevation
     fullWidth: true
@@ -121,7 +121,7 @@ View {
                ? Qt.darker(page.rightSidebar.actionBar.backgroundColor,1).a === 0
                  ? page.rightSidebar.color
                  : page.rightSidebar.actionBar.backgroundColor
-               : Theme.primaryColor
+               : Material.Theme.primaryColor
     }
 
     Controls.StackView {
@@ -218,15 +218,15 @@ View {
         anchors {
             verticalCenter: stack.verticalCenter
             right: parent.right
-            rightMargin: 16 * Units.dp
+            rightMargin: 16 * Material.Units.dp
         }
 
-        spacing: 24 * Units.dp
+        spacing: 24 * Material.Units.dp
 
-        IconButton {
+        Material.IconButton {
             iconName: "navigation/close"
-            color: Theme.lightDark(toolbar.backgroundColor, Theme.light.textColor,
-                Theme.dark.textColor)
+            color: Material.Theme.lightDark(toolbar.backgroundColor, Material.Theme.light.textColor,
+                Material.Theme.dark.textColor)
             onClicked: Qt.quit()
         }
     }

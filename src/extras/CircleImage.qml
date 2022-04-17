@@ -34,7 +34,7 @@ Item {
         mipmap: true
     }
 
-    CircleMask {
+    Extras.CircleMask {
         anchors.fill: image
         source: image
     }

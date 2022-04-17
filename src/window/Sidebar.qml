@@ -9,8 +9,8 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
-import "ListItems" as ListItem
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 /*!
    \qmltype Sidebar
@@ -39,7 +39,7 @@ import "ListItems" as ListItem
    }
    \endqml
  */
-View {
+Material.View {
     id: root
 
     backgroundColor: style === "default" ? "white" : "#333"
@@ -53,14 +53,14 @@ View {
         rightMargin: expanded ? 0 : -width
     }
 
-    width: 250 * Units.dp
+    width: 250 * Material.Units.dp
 
     property bool expanded: true
 
     property string mode: "left" // or "right"
     property alias header: headerItem.text
 
-    property color borderColor: style === "dark" ? Qt.rgba(0.5,0.5,0.5,0.5) : Theme.light.dividerColor
+    property color borderColor: style === "dark" ? Qt.rgba(0.5,0.5,0.5,0.5) : Material.Theme.light.dividerColor
 
     property bool autoFlick: true
 
@@ -96,7 +96,7 @@ View {
             leftMargin: mode === "right" ? 1 : 0
         }
 
-        ListItem.Subheader {
+        MaterialListItem.Subheader {
             id: headerItem
 
             visible: text !== ""
@@ -144,7 +144,7 @@ View {
             }
         }
 
-        Scrollbar {
+        Material.Scrollbar {
             flickableItem: flickable
         }
     }

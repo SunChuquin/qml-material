@@ -10,7 +10,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 import Material.Extras 0.1
 
 /*!
@@ -27,7 +27,7 @@ import Material.Extras 0.1
    See the Material Design guidelines for more details:
    http://www.google.com/design/spec/components/tooltips.html
  */
-Popover {
+Material.Popover {
     id: dropdown
 
     property alias text: tooltipLabel.text
@@ -37,8 +37,8 @@ Popover {
     overlayLayer: "tooltipOverlayLayer"
     globalMouseAreaEnabled: false
 
-    width: tooltipLabel.paintedWidth + 32 * Units.dp
-    implicitHeight: Device.isMobile ? 44 * Units.dp : 40 * Units.dp
+    width: tooltipLabel.paintedWidth + 32 * Material.Units.dp
+    implicitHeight: Material.Device.isMobile ? 44 * Material.Units.dp : 40 * Material.Units.dp
 
     backgroundColor: Qt.rgba(0.2, 0.2, 0.2, 0.9)
 
@@ -46,28 +46,28 @@ Popover {
         id: timer
 
         interval: 1000
-        onTriggered: open(mouseArea, 0, 4 * Units.dp)
+        onTriggered: open(mouseArea, 0, 4 * Material.Units.dp)
     }
 
     Connections {
         target: mouseArea
 
-        onReleased: {
+        function onReleased() {
             if(showing)
                 close()
         }
 
-        onPressAndHold: {
+        function onPressAndHold() {
             if(text !== "" && !showing)
-                open(mouseArea, 0, 4 * Units.dp)
+                open(mouseArea, 0, 4 * Material.Units.dp)
         }
 
-        onEntered: {
+        function onEntered() {
             if(text !== "" && !showing)
                 timer.start()
         }
 
-        onExited: {
+        function onExited() {
             timer.stop()
 
             if(showing)
@@ -75,10 +75,10 @@ Popover {
         }
     }
 
-    Label {
+    Material.Label {
         id: tooltipLabel
         style: "tooltip"
-        color: Theme.dark.textColor
+        color: Material.Theme.dark.textColor
         anchors.centerIn: parent
     }
 }

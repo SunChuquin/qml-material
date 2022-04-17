@@ -9,14 +9,14 @@
  */
 
 import QtQuick 2.0
-import Material 0.3
+import Material 0.3 as Material
 
 Object {
     id: platform
 
     property var platformExtensions
 
-    property color decorationColor: Theme.primaryDarkColor
+    property color decorationColor: Material.Theme.primaryDarkColor
     property var window: null
     readonly property real multiplier: platformExtensions ? platformExtensions.multiplier : 1
 

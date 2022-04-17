@@ -10,7 +10,7 @@
 
 import QtQuick 2.4
 import QtGraphicalEffects 1.0
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype View
@@ -52,70 +52,70 @@ Item {
 
         {
             "opacity": 0.12,
-            "offset": 1 * Units.dp,
-            "blur": 1.5 * Units.dp
+            "offset": 1 * Material.Units.dp,
+            "blur": 1.5 * Material.Units.dp
         },
 
         {
             "opacity": 0.16,
-            "offset": 3 * Units.dp,
-            "blur": 3 * Units.dp
+            "offset": 3 * Material.Units.dp,
+            "blur": 3 * Material.Units.dp
         },
 
         {
             "opacity": 0.19,
-            "offset": 10 * Units.dp,
-            "blur": 10 * Units.dp
+            "offset": 10 * Material.Units.dp,
+            "blur": 10 * Material.Units.dp
         },
 
         {
             "opacity": 0.25,
-            "offset": 14 * Units.dp,
-            "blur": 14 * Units.dp
+            "offset": 14 * Material.Units.dp,
+            "blur": 14 * Material.Units.dp
         },
 
         {
             "opacity": 0.30,
-            "offset": 19 * Units.dp,
-            "blur": 19 * Units.dp
+            "offset": 19 * Material.Units.dp,
+            "blur": 19 * Material.Units.dp
         }
     ]
 
     property var bottomShadow: [
         {
             "opacity": 0,
-            "offset": 0 * Units.dp,
-            "blur": 0 * Units.dp
+            "offset": 0 * Material.Units.dp,
+            "blur": 0 * Material.Units.dp
         },
 
         {
             "opacity": 0.24,
-            "offset": 1 * Units.dp,
-            "blur": 1 * Units.dp
+            "offset": 1 * Material.Units.dp,
+            "blur": 1 * Material.Units.dp
         },
 
         {
             "opacity": 0.23,
-            "offset": 3 * Units.dp,
-            "blur": 3 * Units.dp
+            "offset": 3 * Material.Units.dp,
+            "blur": 3 * Material.Units.dp
         },
 
         {
             "opacity": 0.23,
-            "offset": 6 * Units.dp,
-            "blur": 3 * Units.dp
+            "offset": 6 * Material.Units.dp,
+            "blur": 3 * Material.Units.dp
         },
 
         {
             "opacity": 0.22,
-            "offset": 10 * Units.dp,
-            "blur": 5 * Units.dp
+            "offset": 10 * Material.Units.dp,
+            "blur": 5 * Material.Units.dp
         },
 
         {
             "opacity": 0.22,
-            "offset": 15 * Units.dp,
-            "blur": 6 * Units.dp
+            "offset": 15 * Material.Units.dp,
+            "blur": 6 * Material.Units.dp
         }
     ]
 
@@ -125,8 +125,8 @@ Item {
         property real verticalShadowOffset: elevationInfo.offset * Math.cos((2 * Math.PI) * (parent.rotation / 360.0))
 
         anchors.centerIn: parent
-        width: parent.width + (fullWidth ? 10 * Units.dp : 0)
-        height: parent.height + (fullHeight ? 20 * Units.dp : 0)
+        width: parent.width + (fullWidth ? 10 * Material.Units.dp : 0)
+        height: parent.height + (fullHeight ? 20 * Material.Units.dp : 0)
         anchors.horizontalCenterOffset: horizontalShadowOffset * (elevationInverted ? -1 : 1)
         anchors.verticalCenterOffset: verticalShadowOffset * (elevationInverted ? -1 : 1)
         glowRadius: elevationInfo.blur
@@ -143,8 +143,8 @@ Item {
         property real verticalShadowOffset: elevationInfo.offset * Math.cos((2 * Math.PI) * (parent.rotation / 360.0))
 
         anchors.centerIn: parent
-        width: parent.width + (fullWidth ? 10 * Units.dp : 0)
-        height: parent.height + (fullHeight ? 20 * Units.dp : 0)
+        width: parent.width + (fullWidth ? 10 * Material.Units.dp : 0)
+        height: parent.height + (fullHeight ? 20 * Material.Units.dp : 0)
         anchors.horizontalCenterOffset: horizontalShadowOffset * (elevationInverted ? -1 : 1)
         anchors.verticalCenterOffset: verticalShadowOffset * (elevationInverted ? -1 : 1)
         glowRadius: elevationInfo.blur

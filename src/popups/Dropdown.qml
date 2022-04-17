@@ -10,7 +10,7 @@
 
 import QtQuick 2.4
 import QtQuick.Window 2.2
-import Material 0.3
+import Material 0.3 as Material
 import Material.Extras 0.1
 
 /*!
@@ -19,7 +19,7 @@ import Material.Extras 0.1
 
    \brief Represents a dropdown menu that can display a variety of content.
  */
-PopupBase {
+Material.PopupBase {
     id: dropdown
 
     default property alias data: view.data
@@ -30,7 +30,7 @@ PopupBase {
     closeOnResize: true
 
     function open(caller, offsetX, offsetY) {
-        __lastFocusedItem = Window.activeFocusItem
+        __lastFocusedItem = Material.Window.activeFocusItem
         parent = Utils.findRootChild(dropdown, overlayLayer)
 
         if (!parent.enabled)
@@ -71,9 +71,9 @@ PopupBase {
         dropdown.y += offsetY
 
         if(dropdown.y + height > root.height)
-            dropdown.y += -((dropdown.y + height + 16 * Units.dp) - root.height)
+            dropdown.y += -((dropdown.y + height + 16 * Material.Units.dp) - root.height)
         if(dropdown.x + width > root.width)
-            dropdown.x += -((dropdown.x + width + 16 * Units.dp) - root.width)
+            dropdown.x += -((dropdown.x + width + 16 * Material.Units.dp) - root.width)
 
         showing = true
         parent.currentOverlay = dropdown
@@ -96,10 +96,10 @@ PopupBase {
         property bool center: dropdown.anchor == Item.Center
     }
 
-    View {
+    Material.View {
         id: view
         elevation: 2
-        radius: 2 * Units.dp
+        radius: 2 * Material.Units.dp
         anchors.left: __internal.left ? parent.left : undefined
         anchors.right: __internal.right ? parent.right : undefined
         anchors.top: __internal.top ? parent.top : undefined

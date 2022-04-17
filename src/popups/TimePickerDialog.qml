@@ -9,9 +9,9 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 
-Dialog {
+Material.Dialog {
     contentMargins: 0
     hasActions: true
     floatingActions: true
@@ -20,10 +20,10 @@ Dialog {
     property alias prefer24Hour: timePicker.prefer24Hour
     signal timePicked(date timePicked)
 
-    TimePicker {
+    Material.TimePicker {
         id: timePicker
         isHours: true
-        bottomMargin: 48 * Units.dp
+        bottomMargin: 48 * Material.Units.dp
     }
 
     onAccepted: {

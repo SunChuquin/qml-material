@@ -13,7 +13,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype TextField
@@ -23,8 +23,8 @@ import Material 0.3
  */
 Controls.TextField {
 
-    property color color: Theme.accentColor
-    property color errorColor: Palette.colors["red"]["500"]
+    property color color: Material.Theme.accentColor
+    property color errorColor: Material.Palette.colors["red"]["500"]
     property string helperText
     property bool floatingLabel: false
     property bool hasError: characterLimit && length > characterLimit

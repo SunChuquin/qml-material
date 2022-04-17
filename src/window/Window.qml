@@ -9,8 +9,8 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
-import QtQuick.Window 2.2
+import Material 0.3 as Material
+import QtQuick.Window 2.2 as QuickWindow
 
 /*!
    \qmltype Window
@@ -30,7 +30,7 @@ import QtQuick.Window 2.2
    }
    \endqml
 */
-Window {
+QuickWindow.Window {
     id: window
 
     /*!
@@ -41,27 +41,27 @@ Window {
      */
     property alias theme: __theme
 
-    PlatformExtensions {
+    Material.PlatformExtensions {
         id: platformExtensions
-        decorationColor: Theme.primaryDarkColor
+        decorationColor: Material.Theme.primaryDarkColor
         window: window
     }
 
-    AppTheme {
+    Material.AppTheme {
         id: __theme
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: dialogOverlayLayer
         objectName: "dialogOverlayLayer"
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: tooltipOverlayLayer
         objectName: "tooltipOverlayLayer"
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: overlayLayer
     }
 
@@ -71,14 +71,14 @@ Window {
     // Units
 
     function dp(dp) {
-        return dp * Units.dp
+        return dp * Material.Units.dp
     }
 
     function gu(gu) {
         return units.gu(gu)
     }
 
-    UnitsHelper {
+    Material.UnitsHelper {
         id: units
     }
 }

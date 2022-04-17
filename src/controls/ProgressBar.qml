@@ -12,7 +12,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype ProgressBar
@@ -26,10 +26,10 @@ Controls.ProgressBar {
        The color for the progress bar. By default this is
        the primary color defined in \l Theme::primaryColor
      */
-    property color color: Theme.primaryColor
+    property color color: Material.Theme.primaryColor
 
-    width: 200 * Units.dp
-    height: 4 * Units.dp
+    width: 200 * Material.Units.dp
+    height: 4 * Material.Units.dp
 
     style: MaterialStyle.ProgressBarStyle {}
 }

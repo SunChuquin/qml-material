@@ -9,7 +9,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 import Material.Extras 0.1
 
 /*!
@@ -39,7 +39,7 @@ Item {
         if (action) action.triggered(icon)
     }
 
-    Ink {
+    Material.Ink {
         id: ink
 
         anchors.centerIn: parent
@@ -47,8 +47,8 @@ Item {
         centered: true
         circular: true
 
-        width: parent.width + 20 * Units.dp
-        height: parent.height + 20 * Units.dp
+        width: parent.width + 20 * Material.Units.dp
+        height: parent.height + 20 * Material.Units.dp
 
         z: 0
 
@@ -57,7 +57,7 @@ Item {
         }
     }
 
-    Icon {
+    Material.Icon {
         id: icon
 
         anchors.centerIn: parent
@@ -71,7 +71,7 @@ Item {
         }
     }
 
-    Tooltip {
+    Material.Tooltip {
         text: action ? action.name : ""
         mouseArea: ink
     }

@@ -16,14 +16,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
-import Material.ListItems 0.1
+import Material 0.3 as Material
 
 Item {
     anchors.fill: parent
     id: bottomSheetDemo
 
-    Button {
+    Material.Button {
         anchors.centerIn: parent
         elevation: 1
         text: "Open Bottom Sheet"
@@ -32,46 +31,46 @@ Item {
         }
     }
 
-    BottomActionSheet {
+    Material.BottomActionSheet {
         id: actionSheet
 
         title: "Demo!"
 
         actions: [
-            Action {
+            Material.Action {
                 iconName: "social/share"
                 name: "Share"
             },
 
-            Action {
+            Material.Action {
                 iconName: "file/file_download"
                 name: "Download (Disabled)"
                 enabled: false
             },
 
-            Action {
+            Material.Action {
                 iconName: "action/autorenew"
                 name: "THIS SHOULD BE HIDDEN"
                 visible: false
             },
 
-            Action {
+            Material.Action {
                 iconName: "action/settings"
                 name: "Details"
                 hasDividerAfter: true
             },
 
-            Action {
+            Material.Action {
                 iconName: "content/forward"
                 name: "Move"
             },
 
-            Action {
+            Material.Action {
                 iconName: "action/delete"
                 name: "Delete"
             },
 
-            Action {
+            Material.Action {
                 iconName: "content/create"
                 name: "Rename"
             }

@@ -12,7 +12,7 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.3
+import Material 0.3 as Material
 import Material.Extras 0.1
 
 /*!
@@ -21,7 +21,7 @@ import Material.Extras 0.1
    \brief Dialogs inform users about critical information, require users to make
    decisions, or encapsulate multiple tasks within a discrete process
  */
-PopupBase {
+Material.PopupBase {
     id: dialog
 
     overlayLayer: "dialogOverlayLayer"
@@ -33,14 +33,14 @@ PopupBase {
     width: Math.max(minimumWidth,
                     content.contentWidth + 2 * contentMargins)
 
-    height: Math.min(parent.height - 64 * Units.dp,
+    height: Math.min(parent.height - 64 * Material.Units.dp,
                      headerView.height +
                      content.contentHeight +
                      (floatingActions ? 0 : buttonContainer.height))
 
-    property int contentMargins: 24 * Units.dp
+    property int contentMargins: 24 * Material.Units.dp
 
-    property int minimumWidth: Device.isMobile ? 280 * Units.dp : 300 * Units.dp
+    property int minimumWidth: Material.Device.isMobile ? 280 * Material.Units.dp : 300 * Material.Units.dp
 
     property alias title: titleLabel.text
     property alias text: textLabel.text
@@ -109,12 +109,12 @@ PopupBase {
         open()
     }
 
-    View {
+    Material.View {
         id: dialogContainer
 
         anchors.fill: parent
         elevation: 5
-        radius: 2 * Units.dp
+        radius: 2 * Material.Units.dp
         backgroundColor: "white"
 
         MouseArea {
@@ -164,11 +164,11 @@ PopupBase {
                 }
 
                 width: content.width - 2 * contentMargins
-                spacing: 8 * Units.dp
+                spacing: 8 * Material.Units.dp
             }
         }
 
-        Scrollbar {
+        Material.Scrollbar {
             flickableItem: content
         }
 
@@ -181,7 +181,7 @@ PopupBase {
 
             height: headerView.height
 
-            View {
+            Material.View {
                 backgroundColor: "white"
                 elevation: content.atYBeginning ? 0 : 1
                 fullWidth: true
@@ -218,7 +218,7 @@ PopupBase {
                 visible: titleLabel.visible || textLabel.visible
             }
 
-            Label {
+            Material.Label {
                 id: titleLabel
 
                 width: parent.width
@@ -229,17 +229,17 @@ PopupBase {
 
             Item {
                 width: parent.width
-                height: 20 * Units.dp
+                height: 20 * Material.Units.dp
                 visible: titleLabel.visible
             }
 
-            Label {
+            Material.Label {
                 id: textLabel
 
                 width: parent.width
                 wrapMode: Text.Wrap
                 style: "dialog"
-                color: Theme.light.subTextColor
+                color: Material.Theme.light.subTextColor
                 visible: text != ""
             }
 
@@ -259,9 +259,9 @@ PopupBase {
                 left: parent.left
             }
 
-            height: hasActions ? 52 * Units.dp : 2 * Units.dp
+            height: hasActions ? 52 * Material.Units.dp : 2 * Material.Units.dp
 
-            View {
+            Material.View {
                 id: buttonView
 
                 height: parent.height
@@ -277,18 +277,18 @@ PopupBase {
                     left: parent.left
                 }
 
-                Button {
+                Material.Button {
                     id: negativeButton
 
                     visible: hasActions
                     text: negativeButtonText
-                    textColor: Theme.accentColor
+                    textColor: Material.Theme.accentColor
                     context: "dialog"
 
                     anchors {
                         verticalCenter: parent.verticalCenter
                         right: positiveButton.visible ? positiveButton.left : parent.right
-                        rightMargin: 8 * Units.dp
+                        rightMargin: 8 * Material.Units.dp
                     }
 
                     onClicked: {
@@ -297,17 +297,17 @@ PopupBase {
                     }
                 }
 
-                Button {
+                Material.Button {
                     id: positiveButton
 
                     visible: hasActions
                     text: positiveButtonText
-                    textColor: Theme.accentColor
+                    textColor: Material.Theme.accentColor
                     context: "dialog"
 
                     anchors {
                         verticalCenter: parent.verticalCenter
-                        rightMargin: 8 * Units.dp
+                        rightMargin: 8 * Material.Units.dp
                         right: parent.right
                     }
 

@@ -9,10 +9,10 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
-import Material 0.3
+import QtQuick.Controls.Styles 1.3 as QuickControlsStyle
+import Material 0.3 as Material
 
-RadioButtonStyle {
+QuickControlsStyle.RadioButtonStyle {
     id: style
 
     spacing: 0
@@ -23,13 +23,13 @@ RadioButtonStyle {
     property bool darkBackground: control.hasOwnProperty("darkBackground")
             ? control.darkBackground : false
 
-    label: Label {
+    label: Material.Label {
         text: control.text
         style: "button"
-        color: control.enabled ? style.darkBackground ? Theme.dark.textColor
-                                                        : Theme.light.textColor
-                               : style.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                        : Theme.alpha("#000", 0.26)
+        color: control.enabled ? style.darkBackground ? Material.Theme.dark.textColor
+                                                        : Material.Theme.light.textColor
+                               : style.darkBackground ? Material.Theme.alpha("#fff", 0.30)
+                                                        : Material.Theme.alpha("#000", 0.26)
     }
 
     background: Rectangle {
@@ -37,27 +37,27 @@ RadioButtonStyle {
     }
 
     indicator: Rectangle {
-        implicitWidth: 48 * Units.dp
-        implicitHeight: 48 * Units.dp
+        implicitWidth: 48 * Material.Units.dp
+        implicitHeight: 48 * Material.Units.dp
         radius: implicitHeight / 2
-        color: control.activeFocus ? Theme.alpha(control.color, 0.20) : "transparent"
+        color: control.activeFocus ? Material.Theme.alpha(control.color, 0.20) : "transparent"
 
         Rectangle {
             anchors.centerIn: parent
 
-            implicitWidth: 20 * Units.dp
-            implicitHeight: 20 * Units.dp
+            implicitWidth: 20 * Material.Units.dp
+            implicitHeight: 20 * Material.Units.dp
             radius: implicitHeight / 2
             color: "transparent"
 
             border.color: control.enabled
                 ? control.checked ? style.color
-                                  : style.darkBackground ? Theme.alpha("#fff", 0.70)
-                                                         : Theme.alpha("#000", 0.54)
-                : style.darkBackground ? Theme.alpha("#fff", 0.30)
-                                       : Theme.alpha("#000", 0.26)
+                                  : style.darkBackground ? Material.Theme.alpha("#fff", 0.70)
+                                                         : Material.Theme.alpha("#000", 0.54)
+                : style.darkBackground ? Material.Theme.alpha("#fff", 0.30)
+                                       : Material.Theme.alpha("#000", 0.26)
 
-            border.width: 2 * Units.dp
+            border.width: 2 * Material.Units.dp
             antialiasing: true
 
             Behavior on border.color {
@@ -69,11 +69,11 @@ RadioButtonStyle {
                     centerIn: parent
                     alignWhenCentered: false
                 }
-                implicitWidth: control.checked ? 10 * Units.dp : 0
-                implicitHeight: control.checked ? 10 * Units.dp : 0
+                implicitWidth: control.checked ? 10 * Material.Units.dp : 0
+                implicitHeight: control.checked ? 10 * Material.Units.dp : 0
                 color: control.enabled ? style.color
-                                       : style.darkBackground ? Theme.alpha("#fff", 0.30)
-                                                              : Theme.alpha("#000", 0.26)
+                                       : style.darkBackground ? Material.Theme.alpha("#fff", 0.30)
+                                                              : Material.Theme.alpha("#000", 0.26)
                 radius: implicitHeight / 2
                 antialiasing: true
 

@@ -10,7 +10,7 @@
 
 import QtQuick 2.4
 import QtQuick.Window 2.2
-import Material 0.3
+import Material 0.3 as Material
 import Material.Extras 0.1
 
 /*!
@@ -42,7 +42,7 @@ FocusScope {
     }
 
     function open() {
-        __lastFocusedItem = Window.activeFocusItem
+        __lastFocusedItem = Material.Window.activeFocusItem
         parent = Utils.findRootChild(popup, overlayLayer)
 
         if (!parent.enabled)

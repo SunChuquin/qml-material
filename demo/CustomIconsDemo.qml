@@ -16,15 +16,15 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 Column {
     id: column
 
     anchors.fill: parent
 
-    ListItem.Subheader {
+    MaterialListItem.Subheader {
         text: "Custom icons with different colors"
     }
 
@@ -33,10 +33,10 @@ Column {
             width: dp(56)
             height: dp(56)
 
-            Icon {
+            Material.Icon {
                 anchors.centerIn: parent
                 source: Qt.resolvedUrl("images/weather-sunset.svg")
-                color: Theme.light.iconColor
+                color: Material.Theme.light.iconColor
             }
         }
 
@@ -44,10 +44,10 @@ Column {
             width: dp(56)
             height: dp(56)
 
-            Icon {
+            Material.Icon {
                 anchors.centerIn: parent
                 source: Qt.resolvedUrl("images/weather-pouring.svg")
-                color: Theme.light.iconColor
+                color: Material.Theme.light.iconColor
             }
         }
 
@@ -55,10 +55,10 @@ Column {
             width: dp(56)
             height: dp(56)
             color: "#333"
-            Icon {
+            Material.Icon {
                 anchors.centerIn: parent
                 source: Qt.resolvedUrl("images/weather-sunset.svg")
-                color: Theme.dark.iconColor
+                color: Material.Theme.dark.iconColor
             }
         }
 
@@ -66,15 +66,15 @@ Column {
             width: dp(56)
             height: dp(56)
             color: "#333"
-            Icon {
+            Material.Icon {
                 anchors.centerIn: parent
                 source: Qt.resolvedUrl("images/weather-pouring.svg")
-                color: Theme.dark.iconColor
+                color: Material.Theme.dark.iconColor
             }
         }
     }
 
-    ListItem.Subheader {
+    MaterialListItem.Subheader {
         text: "Non-colorized custom icons"
     }
 
@@ -83,10 +83,10 @@ Column {
             width: dp(56)
             height: dp(40)
 
-            Icon {
+            Material.Icon {
                 anchors.centerIn: parent
                 source: Qt.resolvedUrl("images/go-last.color.svg")
-                color: Theme.light.iconColor
+                color: Material.Theme.light.iconColor
             }
         }
 
@@ -94,15 +94,15 @@ Column {
             width: dp(56)
             height: dp(40)
 
-            Icon {
+            Material.Icon {
                 anchors.centerIn: parent
                 source: Qt.resolvedUrl("images/list-add.color.svg")
-                color: Theme.light.iconColor
+                color: Material.Theme.light.iconColor
             }
         }
     }
 
-    ListItem.Subheader {
+    MaterialListItem.Subheader {
         text: "Custom icons in IconButtons"
     }
 
@@ -111,10 +111,10 @@ Column {
             width: dp(56)
             height: dp(40)
 
-            IconButton {
+            Material.IconButton {
                 anchors.centerIn: parent
                 iconSource: Qt.resolvedUrl("images/weather-sunset.svg")
-                color: Theme.light.iconColor
+                color: Material.Theme.light.iconColor
             }
         }
 
@@ -122,10 +122,10 @@ Column {
             width: dp(56)
             height: dp(40)
 
-            IconButton {
+            Material.IconButton {
                 anchors.centerIn: parent
                 iconSource: Qt.resolvedUrl("images/list-add.color.svg")
-                color: Theme.light.iconColor
+                color: Material.Theme.light.iconColor
             }
         }
     }

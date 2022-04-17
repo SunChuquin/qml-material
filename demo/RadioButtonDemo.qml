@@ -1,7 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import QtQuick.Controls 1.3 as QuickControls
-import Material 0.2
+import QtQuick.Controls 1.3 as Controls
+import Material 0.3 as Material
 
 ColumnLayout {
     spacing: 0
@@ -23,21 +23,21 @@ ColumnLayout {
                 columnSpacing: dp(20)
                 columns: 2
 
-                QuickControls.ExclusiveGroup { id: optionGroup }
+                Controls.ExclusiveGroup { id: optionGroup }
 
-                Label {
+                Material.Label {
                     Layout.alignment : Qt.AlignHCenter
                     text: "Normal"
-                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
                 }
 
-                Label {
+                Material.Label {
                     Layout.alignment : Qt.AlignHCenter
                     text: "Disabled"
-                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
+                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
                 }
 
-                RadioButton {
+                Material.RadioButton {
                     checked: true
                     text: "Option 1"
                     darkBackground: index == 1
@@ -45,21 +45,21 @@ ColumnLayout {
                     exclusiveGroup: optionGroup
                 }
 
-                RadioButton {
+                Material.RadioButton {
                     checked: true
                     enabled: false
                     text: "Disabled"
                     darkBackground: index == 1
                 }
 
-                RadioButton {
+                Material.RadioButton {
                     text: "Option 2"
                     darkBackground: index == 1
                     canToggle: true
                     exclusiveGroup: optionGroup
                 }
 
-                RadioButton {
+                Material.RadioButton {
                     enabled: false
                     text: "Disabled"
                     darkBackground: index == 1

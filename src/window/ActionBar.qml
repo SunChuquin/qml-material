@@ -11,8 +11,8 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.3
-import Material.ListItems 0.1 as ListItem
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 /*!
    \qmltype ActionBar
@@ -31,7 +31,7 @@ import Material.ListItems 0.1 as ListItem
 Item {
     id: actionBar
 
-    implicitHeight: 1 * Device.gridUnit * Units.dp
+    implicitHeight: 1 * Material.Device.gridUnit * Material.Units.dp
 
     anchors {
         left: parent.left
@@ -46,7 +46,7 @@ Item {
        When used with a page, the actions will be set to the page's \l Page::actions
        property, so set that instead of changing this directly.
      */
-    property list<Action> actions
+    property list<Material.Action> actions
 
     /*!
        The back action to display to the left of the title in the action bar.
@@ -58,20 +58,20 @@ Item {
        When using an action bar in a page, set the \l Page::backAction instead of
        directly setting this property.
      */
-    property Action backAction
+    property Material.Action backAction
 
     /*!
        The background color of the window decoration when the action bar's page is active,
        usually a darker version of the \l backgroundColor.
        By default this is the primary dark color defined in \l Theme::primaryDarkColor
      */
-    property color decorationColor: Theme.primaryDarkColor
+    property color decorationColor: Material.Theme.primaryDarkColor
 
     /*!
        The background color for the toolbar when the action bar's page is active.
        By default this is the primary color defined in \l Theme::primaryColor
      */
-    property color backgroundColor: Theme.primaryColor
+    property color backgroundColor: Material.Theme.primaryColor
 
     /*!
        \qmlproperty Item customContent
@@ -115,7 +115,7 @@ Item {
      *
      * \since 0.3
      */
-    property int iconSize: Units.gridUnit == 48 * Units.dp ? 20 * Units.dp : 24 * Units.dp
+    property int iconSize: Material.Units.gridUnit == 48 * Material.Units.dp ? 20 * Material.Units.dp : 24 * Material.Units.dp
 
     /*!
      * Set to true to integrate the tab bar into a single row with the actions.
@@ -197,7 +197,7 @@ Item {
      */
     function openOverflowMenu() {
         if (overflowMenuAvailable && !overflowMenuShowing)
-            overflowMenu.open(overflowButton, 4 * Units.dp, -4 * Units.dp);
+            overflowMenu.open(overflowButton, 4 * Material.Units.dp, -4 * Material.Units.dp);
     }
 
     /*!
@@ -218,21 +218,21 @@ Item {
         })
     }
 
-    IconButton {
+    Material.IconButton {
         id: leftItem
 
         anchors {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
-            leftMargin: leftItem.show ? 16 * Units.dp : -leftItem.width
+            leftMargin: leftItem.show ? 16 * Material.Units.dp : -leftItem.width
 
             Behavior on leftMargin {
                 NumberAnimation { duration: 200 }
             }
         }
 
-        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                            Theme.dark.iconColor)
+        color: Material.Theme.lightDark(actionBar.backgroundColor, Material.Theme.light.iconColor,
+                                                            Material.Theme.dark.iconColor)
         size: iconSize
         action: backAction
 
@@ -246,15 +246,15 @@ Item {
         property bool show: backAction && backAction.visible
     }
 
-    Label {
+    Material.Label {
         id: label
 
         anchors {
             verticalCenter: actionsRow.verticalCenter
             left: parent.left
             right: actionsRow.left
-            leftMargin:16 * Units.dp + (leftItem.show ? 1 * Device.gridUnit * Units.dp : 0)
-            rightMargin: 16 * Units.dp
+            leftMargin:16 * Material.Units.dp + (leftItem.show ? 1 * Material.Device.gridUnit * Material.Units.dp : 0)
+            rightMargin: 16 * Material.Units.dp
 
             Behavior on leftMargin {
                 NumberAnimation { duration: 200 }
@@ -267,8 +267,8 @@ Item {
         textFormat: Text.PlainText
         text: actionBar.title
         style: "title"
-        color: Theme.lightDark(actionBar.backgroundColor, Theme.light.textColor,
-                                                            Theme.dark.textColor)
+        color: Material.Theme.lightDark(actionBar.backgroundColor, Material.Theme.light.textColor,
+                                                            Material.Theme.dark.textColor)
         elide: Text.ElideRight
     }
 
@@ -277,41 +277,41 @@ Item {
 
         anchors {
             right: parent.right
-            rightMargin: 16 * Units.dp
+            rightMargin: 16 * Material.Units.dp
         }
 
         height: parent.implicitHeight
 
-        spacing: 24 * Units.dp
+        spacing: 24 * Material.Units.dp
 
         Repeater {
             model: __internal.visibleActions.length > maxActionCount
                     ? maxActionCount - 1
                     : __internal.visibleActions.length
 
-            delegate: IconButton {
+            delegate: Material.IconButton {
                 id: iconAction
 
                 objectName: "action/" + action.objectName
 
                 action: __internal.visibleActions[index]
 
-                color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                                  Theme.dark.iconColor)
+                color: Material.Theme.lightDark(actionBar.backgroundColor, Material.Theme.light.iconColor,
+                                                                  Material.Theme.dark.iconColor)
                 size: iconSize
 
                 anchors.verticalCenter: parent ? parent.verticalCenter : undefined
             }
         }
 
-        IconButton {
+        Material.IconButton {
             id: overflowButton
 
             iconName: "navigation/more_vert"
             objectName: "action/overflow"
-            size: 27 * Units.dp
-            color: Theme.lightDark(actionBar.backgroundColor, Theme.light.iconColor,
-                                                              Theme.dark.iconColor)
+            size: 27 * Material.Units.dp
+            color: Material.Theme.lightDark(actionBar.backgroundColor, Material.Theme.light.iconColor,
+                                                              Material.Theme.dark.iconColor)
             visible: actionBar.overflowMenuAvailable
             anchors.verticalCenter: parent.verticalCenter
 
@@ -336,16 +336,16 @@ Item {
             top: actionsRow.bottom
             left: label.left
             right: parent.right
-            rightMargin: 16 * Units.dp
+            rightMargin: 16 * Material.Units.dp
         }
 
         height: childrenRect.height
     }
 
-    TabBar {
+    Material.TabBar {
         id: tabBar
 
-        darkBackground: Theme.isDarkColor(actionBar.backgroundColor)
+        darkBackground: Material.Theme.isDarkColor(actionBar.backgroundColor)
         leftKeyline: actionBar.leftKeyline
         height: integratedTabBar ? parent.implicitHeight : implicitHeight
 
@@ -357,12 +357,12 @@ Item {
         }
     }
 
-    Dropdown {
+    Material.Dropdown {
         id: overflowMenu
         objectName: "overflowMenu"
 
-        width: 250 * Units.dp
-        height: columnView.height + 16 * Units.dp
+        width: 250 * Material.Units.dp
+        height: columnView.height + 16 * Material.Units.dp
 
         ColumnLayout {
             id: columnView
@@ -372,12 +372,12 @@ Item {
             Repeater {
                 model: __internal.visibleActions.length - (maxActionCount - 1)
 
-                ListItem.Standard {
+                MaterialListItem.Standard {
                     id: listItem
 
                     objectName: "action/" + action.objectName
 
-                    property Action action: __internal.visibleActions[index + maxActionCount - 1]
+                    property Material.Action action: __internal.visibleActions[index + maxActionCount - 1]
 
                     text: action.name
                     iconSource: action.iconSource

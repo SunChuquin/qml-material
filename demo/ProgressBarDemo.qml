@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3 as Material
 
 Item {
     implicitHeight: grid.implicitHeight + dp(40)
@@ -11,11 +11,11 @@ Item {
         columnSpacing: dp(20)
         rowSpacing: dp(20)
 
-        Label {
+        Material.Label {
             text: "Determinate"
         }
 
-        ProgressBar {
+        Material.ProgressBar {
             Layout.fillWidth: true
             color: theme.accentColor
 
@@ -33,38 +33,38 @@ Item {
             }
         }
 
-        Label {
+        Material.Label {
             text: "Indeterminate"
         }
 
-        ProgressBar {
+        Material.ProgressBar {
             Layout.fillWidth: true
             color: theme.accentColor
             indeterminate: true
         }
 
-        Label {
+        Material.Label {
             text: "Default"
         }
 
-        ProgressCircle {
+        Material.ProgressCircle {
             Layout.alignment: Qt.AlignCenter
         }
 
-        Label {
+        Material.Label {
             text: "Custom Color"
         }
 
-        ProgressCircle {
+        Material.ProgressCircle {
             Layout.alignment: Qt.AlignCenter
             color: "#E91E63"
         }
 
-        Label {
+        Material.Label {
             text: "Cyclic Colors"
         }
 
-        ProgressCircle {
+        Material.ProgressCircle {
             id: cyclicColorProgress
             Layout.alignment: Qt.AlignCenter
             SequentialAnimation {
@@ -109,32 +109,32 @@ Item {
             }
         }
 
-        Label {
+        Material.Label {
             text: "Custom Size"
         }
 
-        ProgressCircle {
+        Material.ProgressCircle {
             Layout.alignment: Qt.AlignCenter
             width: dp(64)
             height: dp(64)
         }
 
-        Label {
+        Material.Label {
             text: "Custom Size + Thickness"
         }
 
-        ProgressCircle {
+        Material.ProgressCircle {
             Layout.alignment: Qt.AlignCenter
             width: dp(64)
             height: dp(64)
             dashThickness: dp(8)
         }
 
-        Label {
+        Material.Label {
             text: "Determinate Value"
         }
 
-        ProgressCircle {
+        Material.ProgressCircle {
             id: determinateProgress
             Layout.alignment: Qt.AlignCenter
             width: dp(64)
@@ -156,7 +156,7 @@ Item {
                 PauseAnimation { duration: 1000 }
             }
 
-            Label {
+            Material.Label {
                 anchors.centerIn: parent
                 text: Math.round(determinateProgress.value) + "%"
             }

@@ -8,21 +8,20 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
-import Material 0.3
-import "../Base/"
+import QtQuick 2.4 as Quick
+import QtQuick.Controls.Styles 1.3 as ControlStyle
+import Material 0.3 as Material
 
-ToolButtonStyle {
+ControlStyle.ToolButtonStyle {
     panel: View {
-        radius: 2 * Units.dp
+        radius: 2 * Material.Units.dp
 
         implicitHeight: label.text == ""
-                ? 44 * Units.dp : Math.max(36 * Units.dp, label.height + 16 * Units.dp)
+                ? 44 * Material.Units.dp : Math.max(36 * Material.Units.dp, label.height + 16 * Material.Units.dp)
         implicitWidth: label.text == ""
-                ? 44 * Units.dp : Math.max(64 * Units.dp, label.width + 16 * Units.dp)
+                ? 44 * Material.Units.dp : Math.max(64 * Material.Units.dp, label.width + 16 * Material.Units.dp)
 
-        Ink {
+        Material.Ink {
             id: mouseArea
 
             anchors.fill: parent
@@ -30,8 +29,8 @@ ToolButtonStyle {
             centered: true
             circular: label.text == ""
 
-            width: parent.width + 8 * Units.dp
-            height: parent.height + 8 * Units.dp
+            width: parent.width + 8 * Material.Units.dp
+            height: parent.height + 8 * Material.Units.dp
 
             Connections {
                 target: control.__behavior
@@ -41,26 +40,26 @@ ToolButtonStyle {
             }
         }
 
-        Row {
+        Quick.Row {
             anchors.centerIn: parent
 
-            spacing: 8 * Units.dp
+            spacing: 8 * Material.Units.dp
 
-            Image {
+            Quick.Image {
                 id: image
                 anchors.verticalCenter: parent.verticalCenter
                 source: control.iconSource
-                width: 24 * Units.dp
+                width: 24 * Material.Units.dp
                 height: width
             }
 
-            Label {
+            Material.Label {
                 id: label
                 anchors.verticalCenter: parent.verticalCenter
                 text: control.iconSource !== "" ? "" : control.text
                 style: "button"
-                color: Theme.lightDark(Theme.primaryColor, Theme.light.textColor,
-                                                           Theme.dark.textColor)
+                color: Material.Theme.lightDark(Material.Theme.primaryColor, Material.Theme.light.textColor,
+                                                Material.Theme.dark.textColor)
                 visible: text == ""
             }
         }

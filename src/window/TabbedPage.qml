@@ -11,6 +11,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles 1.3 as Styles
+import Material 0.3 as Material
 
 /*!
    \qmltype TabbedPage
@@ -20,7 +21,7 @@ import QtQuick.Controls.Styles 1.3 as Styles
 
    This adds a full-size TabView to a page add hooks up the tab bar to the TabView.
  */
-Page {
+Material.Page {
     id: page
 
     default property alias content: tabView.data
@@ -30,7 +31,7 @@ Page {
      *
      * \since 0.3
      */
-    readonly property Tab selectedTab: tabView.count > 0
+    readonly property Material.Tab selectedTab: tabView.count > 0
             ? tabView.getTab(selectedTabIndex) : null
 
     tabs: tabView

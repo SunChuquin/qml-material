@@ -9,14 +9,15 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import QtQuick 2.4
+import QtQuick 2.4 as Quick
+import Material.Extras 0.1 as Extra
 
-Image {
+Quick.Item {
   id: image
 
   property color averageColor
 
-  Canvas {
+  Quick.Canvas {
     id: canvas
 
     opacity: 0

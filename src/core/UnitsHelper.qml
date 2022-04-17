@@ -49,6 +49,6 @@ Object {
     }
 
     function gu(number) {
-        return dp(number * Device.gridUnit)
+        return dp(number * Material.Device.gridUnit)
     }
 }

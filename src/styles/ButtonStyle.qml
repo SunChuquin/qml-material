@@ -9,10 +9,10 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
-import Material 0.3
+import QtQuick.Controls.Styles 1.3 as ControlStyle
+import Material 0.3 as Material
 
-ButtonStyle {
+ControlStyle.ButtonStyle {
     id: style
 
     padding {
@@ -23,7 +23,7 @@ ButtonStyle {
     }
 
     property bool darkBackground: control.hasOwnProperty("darkBackground")
-                ? control.darkBackground : Theme.isDarkColor(controlBackground)
+                ? control.darkBackground : Material.Theme.isDarkColor(controlBackground)
 
     property int controlElevation: control.hasOwnProperty("elevation") ? control.elevation : 1
 
@@ -32,12 +32,12 @@ ButtonStyle {
 
     property string context: control.hasOwnProperty("context") ? control.context : "default"
 
-    background: View {
+    background: Material.View {
         id: background
 
-        implicitHeight: 36 * Units.dp
+        implicitHeight: 36 * Material.Units.dp
 
-        radius: 2 * Units.dp
+        radius: 2 * Material.Units.dp
 
         backgroundColor: control.enabled || controlElevation === 0
                 ? controlBackground
@@ -62,38 +62,38 @@ ButtonStyle {
                             : 0.05)
            : "transparent"
 
-        Ink {
+        Material.Ink {
             id: mouseArea
 
             anchors.fill: parent
             focused: control.focus && background.context !== "dialog"
                     && background.context !== "snackbar"
-            focusWidth: parent.width - 30 * Units.dp
+            focusWidth: parent.width - 30 * Material.Units.dp
             focusColor: Qt.darker(background.backgroundColor, 1.05)
 
             Connections {
                 target: control.__behavior
-                onPressed: mouseArea.onPressed(mouse)
-                onCanceled: mouseArea.onCanceled()
-                onReleased: mouseArea.onReleased(mouse)
+                function onPressed(mouse) { mouseArea.onPressed(mouse) }
+                function onCanceled() { mouseArea.onCanceled() }
+                function onReleased(mouse) { mouseArea.onReleased(mouse) }
             }
         }
     }
     label: Item {
-        implicitHeight: Math.max(36 * Units.dp, label.height + 16 * Units.dp)
+        implicitHeight: Math.max(36 * Material.Units.dp, label.height + 16 * Material.Units.dp)
         implicitWidth: context == "dialog"
-                ? Math.max(64 * Units.dp, label.width + 16 * Units.dp)
-                : context == "snackbar" ? label.width + 16 * Units.dp
-                                        : Math.max(88 * Units.dp, label.width + 32 * Units.dp)
+                ? Math.max(64 * Material.Units.dp, label.width + 16 * Material.Units.dp)
+                : context == "snackbar" ? label.width + 16 * Material.Units.dp
+                                        : Math.max(88 * Material.Units.dp, label.width + 32 * Material.Units.dp)
 
-        Label {
+        Material.Label {
             id: label
             anchors.centerIn: parent
             text: control.text
             style: "button"
             color: control.enabled ? control.hasOwnProperty("textColor")
-                                     ? control.textColor : darkBackground ? Theme.dark.textColor
-                                                                          : Theme.light.textColor
+                                     ? control.textColor : darkBackground ? Material.Theme.dark.textColor
+                                                                          : Material.Theme.light.textColor
                     : control.darkBackground ? Qt.rgba(1, 1, 1, 0.30)
                                              : Qt.rgba(0, 0, 0, 0.26)
         }

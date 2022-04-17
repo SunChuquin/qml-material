@@ -1,11 +1,10 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
-import Material.ListItems 0.1 as ListItem
-import Material.Extras 0.1
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 Item {
-    View {
+    Material.View {
         anchors.centerIn: parent
 
         width: dp(350)
@@ -23,7 +22,7 @@ Item {
                 bottomMargin: dp(16)
             }
 
-            Label {
+            Material.Label {
                 id: titleLabel
 
                 anchors {
@@ -41,13 +40,13 @@ Item {
                 Layout.preferredHeight: dp(8)
             }
 
-            ListItem.Standard {
-                action: Icon {
+            MaterialListItem.Standard {
+                action: Material.Icon {
                     anchors.centerIn: parent
                     name: "action/account_circle"
                 }
 
-                content: TextField {
+                content: Material.TextField {
                     anchors.centerIn: parent
                     width: parent.width
 
@@ -55,13 +54,13 @@ Item {
                 }
             }
 
-            ListItem.Standard {
-                action: Icon {
+            MaterialListItem.Standard {
+                action: Material.Icon {
                     anchors.centerIn: parent
                     name: "maps/place"
                 }
 
-                content: TextField {
+                content: Material.TextField {
                     anchors.centerIn: parent
                     width: parent.width
 
@@ -69,28 +68,28 @@ Item {
                 }
             }
 
-            ListItem.Standard {
+            MaterialListItem.Standard {
                 action: Item {}
 
                 content: RowLayout {
                     anchors.centerIn: parent
                     width: parent.width
 
-                    TextField {
+                    Material.TextField {
                         Layout.alignment: Qt.AlignVCenter
                         Layout.preferredWidth: 0.4 * parent.width
 
                         text: "New York"
                     }
 
-                    MenuField {
+                    Material.MenuField {
                         Layout.alignment: Qt.AlignVCenter
                         Layout.preferredWidth: 0.2 * parent.width
 
                         model: ["NY", "NC", "ND"]
                     }
 
-                    TextField {
+                    Material.TextField {
                         Layout.alignment: Qt.AlignVCenter
                         Layout.preferredWidth: 0.3 * parent.width
 
@@ -99,13 +98,13 @@ Item {
                 }
             }
 
-            ListItem.Standard {
-                action: Icon {
+            MaterialListItem.Standard {
+                action: Material.Icon {
                     anchors.centerIn: parent
                     name: "communication/email"
                 }
 
-                content: TextField {
+                content: Material.TextField {
                     anchors.centerIn: parent
                     width: parent.width
 
@@ -127,14 +126,14 @@ Item {
                     margins: dp(16)
                 }
 
-                Button {
+                Material.Button {
                     text: "Cancel"
-                    textColor: Theme.primaryColor
+                    textColor: Material.Theme.primaryColor
                 }
 
-                Button {
+                Material.Button {
                     text: "Done"
-                    textColor: Theme.primaryColor
+                    textColor: Material.Theme.primaryColor
                 }
             }
         }

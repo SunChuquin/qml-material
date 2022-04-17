@@ -9,7 +9,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype AppTheme
@@ -46,15 +46,15 @@ QtObject {
      */
     property string primaryDarkColor: primaryColor
 
-    onPrimaryColorChanged: Theme.primaryColor = getColor(primaryColor, "500")
-    onPrimaryDarkColorChanged: Theme.primaryDarkColor = getColor(primaryDarkColor, "700")
-    onAccentColorChanged: Theme.accentColor = getColor(accentColor, "A200")
-    onBackgroundColorChanged: Theme.backgroundColor = getColor(backgroundColor, "500")
-    onTabHighlightColorChanged: Theme.tabHighlightColor = getColor(tabHighlightColor, "500")
+    onPrimaryColorChanged: Material.Theme.primaryColor = getColor(primaryColor, "500")
+    onPrimaryDarkColorChanged: Material.Theme.primaryDarkColor = getColor(primaryDarkColor, "700")
+    onAccentColorChanged: Material.Theme.accentColor = getColor(accentColor, "A200")
+    onBackgroundColorChanged: Material.Theme.backgroundColor = getColor(backgroundColor, "500")
+    onTabHighlightColorChanged: Material.Theme.tabHighlightColor = getColor(tabHighlightColor, "500")
 
     function getColor(color, shade) {
-        if (Palette.colors.hasOwnProperty(color)) {
-            return Palette.colors[color][shade]
+        if (Material.Palette.colors.hasOwnProperty(color)) {
+            return Material.Palette.colors[color][shade]
         } else {
             return color
         }

@@ -12,7 +12,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles.Material 0.1 as MaterialStyle
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype CheckBox
@@ -26,7 +26,7 @@ Controls.CheckBox {
     /*!
        The checkbox color. By default this is the app's accent color
      */
-    property color color: darkBackground ? Theme.dark.accentColor : Theme.light.accentColor
+    property color color: darkBackground ? Material.Theme.dark.accentColor : Material.Theme.light.accentColor
 
     /*!
        Set to \c true if the checkbox is on a dark background
@@ -35,16 +35,16 @@ Controls.CheckBox {
 
     style: MaterialStyle.CheckBoxStyle {}
 
-    Ink {
+    Material.Ink {
         anchors {
             verticalCenter: parent.verticalCenter
             left: parent.left
-            leftMargin: 4 * Units.dp
+            leftMargin: 4 * Material.Units.dp
         }
 
-        width: 40 * Units.dp
-        height: 40 * Units.dp
-        color: checkBox.checked ? Theme.alpha(checkBox.color, 0.20)
+        width: 40 * Material.Units.dp
+        height: 40 * Material.Units.dp
+        color: checkBox.checked ? Material.Theme.alpha(checkBox.color, 0.20)
                                 : checkBox.darkBackground ? Qt.rgba(1,1,1,0.1)
                                                           : Qt.rgba(0,0,0,0.1)
         enabled: checkBox.enabled

@@ -9,10 +9,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/.
  */
 
-import QtQuick 2.4
+import QtQuick 2.4 as Quick
 import QtQuick.Window 2.2
-import Material 0.3
-import QtGraphicalEffects 1.0
+import Material 0.3 as Material
+import QtGraphicalEffects 1.0 as QtGraphicalEffects
 
 /*!
    \qmltype Icon
@@ -20,11 +20,11 @@ import QtGraphicalEffects 1.0
 
    \brief Displays an icon from the Material Design and FontAwesome icon collections.
 */
-Item {
+Quick.Item {
     id: icon
 
-    property color color: Theme.light.iconColor
-    property real size: 24 * Units.dp
+    property color color: Material.Theme.light.iconColor
+    property real size: 24 * Material.Units.dp
 
     /*!
        The name of the icon to display.
@@ -44,14 +44,14 @@ Item {
     property string source: name ? "icon://" + name : ""
 
     property bool valid: source.indexOf("icon://awesome/") == 0
-            ? awesomeIcon.valid : image.status == Image.Ready
+            ? awesomeIcon.valid : image.status == Quick.Image.Ready
 
     width: size
     height: size
 
     property bool colorize: icon.source.indexOf(".color.") === -1
 
-    Image {
+    Quick.Image {
         id: image
 
         anchors.fill: parent
@@ -64,10 +64,10 @@ Item {
                 var name = icon.source.substring(7)
 
                 if (name) {
-                    if (Theme.iconsRoot.indexOf('qrc') != -1)
-                        return Theme.iconsRoot + '/' + name + '.svg'
+                    if (Material.Theme.iconsRoot.indexOf('qrc') != -1)
+                        return Material.Theme.iconsRoot + '/' + name + '.svg'
                     else
-                        return Theme.iconsRoot + '/' + name.replace('/', '_') + '.svg'
+                        return Material.Theme.iconsRoot + '/' + name.replace('/', '_') + '.svg'
                 } else {
                     return ""
                 }
@@ -82,18 +82,18 @@ Item {
         }
     }
 
-    ColorOverlay {
+    QtGraphicalEffects.ColorOverlay {
         id: overlay
 
         anchors.fill: parent
         source: image
-        color: Theme.alpha(icon.color, 1)
+        color: Material.Theme.alpha(icon.color, 1)
         cached: true
         visible: image.source != "" && colorize
         opacity: icon.color.a
     }
 
-    AwesomeIcon {
+    Material.AwesomeIcon {
         id: awesomeIcon
 
         anchors.centerIn: parent

@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2
+import Material 0.3 as Material
 
 Item {
     implicitHeight: column.height
@@ -10,32 +10,32 @@ Item {
         anchors.centerIn: parent
         spacing: dp(32)
 
-        TextField {
+        Material.TextField {
             text: "Big Field with text"
             font.pixelSize: dp(32)
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        TextField {
+        Material.TextField {
             placeholderText: "Search..."
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        TextField {
+        Material.TextField {
             text: "Text under label"
             placeholderText: "Floating label"
             floatingLabel: true
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        TextField {
+        Material.TextField {
             placeholderText: "Character limit"
             floatingLabel: true
             characterLimit: 10
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        TextField {
+        Material.TextField {
             id: passwordField
             placeholderText: "Password"
             floatingLabel: true

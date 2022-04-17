@@ -1,14 +1,14 @@
-import QtQuick 2.4
-import Material 0.2
-import Material.Extras 0.1
+import QtQuick 2.4 as Quick
+import Material 0.3 as Material
+import Material.Extras 0.1 as Extra
 
-Item {
+Quick.Item {
 
-    Column {
+    Quick.Column {
         anchors.centerIn: parent
         spacing: dp(20)
 
-        Button {
+        Material.Button {
             anchors.horizontalCenter: parent.horizontalCenter
 
             text: "Push subpage"
@@ -16,7 +16,7 @@ Item {
             onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
         }
 
-        Button {
+        Material.Button {
             anchors.horizontalCenter: parent.horizontalCenter
 
             text: "Push subpage with sidebar"
@@ -24,7 +24,7 @@ Item {
             onClicked: pageStack.push(Qt.resolvedUrl("SidebarPage.qml"))
         }
 
-        Image {
+        Quick.Image {
             id: image
 
             anchors.horizontalCenter: parent.horizontalCenter
@@ -33,36 +33,36 @@ Item {
             width: dp(400)
             height: dp(250)
 
-            Ink {
+            Material.Ink {
                 anchors.fill: parent
 
                 onClicked: overlayView.open(image)
             }
         }
 
-        Label {
+        Material.Label {
             anchors.horizontalCenter: parent.horizontalCenter
 
             style: "subheading"
-            color: Theme.light.subTextColor
+            color: Material.Theme.light.subTextColor
             text: "Tap to edit picture"
             font.italic: true
         }
     }
 
-    OverlayView {
+    Material.OverlayView {
         id: overlayView
 
         width: dp(800)
         height: dp(500)
 
-        Image {
+        Quick.Image {
             id: contentImage
             source: Qt.resolvedUrl("images/balloon.jpg")
             anchors.fill: parent
         }
 
-        Row {
+        Quick.Row {
             anchors {
                 top: parent.top
                 right: parent.right
@@ -73,15 +73,15 @@ Item {
 
             spacing: dp(24)
 
-            Repeater {
+            Quick.Repeater {
                 model: ["content/add", "image/edit", "action/delete"]
 
-                delegate: IconButton {
+                delegate: Material.IconButton {
                     id: iconAction
 
                     iconName: modelData
 
-                    color: Theme.dark.iconColor
+                    color: Material.Theme.dark.iconColor
                     size: iconName == "content/add" ? dp(27) : dp(24)
                     anchors.verticalCenter: parent.verticalCenter
                 }

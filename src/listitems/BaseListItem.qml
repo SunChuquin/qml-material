@@ -9,7 +9,8 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
+import Material.Extras 0.1 as Extra
 
 /*!
    \qmltype BaseListItem
@@ -19,7 +20,7 @@ import Material 0.3
 
    Provides ink effects, mouse/touch handling and tinting on mouse hover.
  */
-View {
+Material.View {
     id: listItem
     anchors {
         left: parent ? parent.left : undefined
@@ -27,7 +28,7 @@ View {
     }
 
     property bool darkBackground
-    property int margins: 16 * Units.dp
+    property int margins: 16 * Material.Units.dp
 
     property bool selected
     property bool interactive: true
@@ -40,7 +41,7 @@ View {
 
     opacity: enabled ? 1 : 0.6
 
-    ThinDivider {
+    Material.ThinDivider {
         anchors.bottom: parent.bottom
         anchors.leftMargin: dividerInset
 
@@ -48,7 +49,7 @@ View {
         darkBackground: listItem.darkBackground
     }
 
-    Ink {
+    Material.Ink {
         id: ink
 
         onClicked: listItem.clicked()

@@ -10,7 +10,7 @@
 
 import QtQuick 2.4
 import QtQuick.Window 2.2
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype MainView
@@ -29,27 +29,27 @@ Item {
      */
     property alias theme: __theme
 
-    AppTheme {
+    Material.AppTheme {
         id: __theme
     }
 
-    PlatformExtensions {
+    Material.PlatformExtensions {
         id: platformExtensions
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: dialogOverlayLayer
         objectName: "dialogOverlayLayer"
         z: 100
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: tooltipOverlayLayer
         objectName: "tooltipOverlayLayer"
         z: 100
     }
 
-    OverlayLayer {
+    Material.OverlayLayer {
         id: overlayLayer
         z: 100
     }
@@ -60,14 +60,14 @@ Item {
     // Units
 
     function dp(dp) {
-        return dp * Units.dp
+        return dp * Material.Units.dp
     }
 
     function gu(gu) {
         return units.gu(gu)
     }
 
-    UnitsHelper {
+    Material.UnitsHelper {
         id: units
     }
 }

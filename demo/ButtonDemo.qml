@@ -1,6 +1,6 @@
 import QtQuick 2.4
-import Material 0.2
 import QtQuick.Controls 1.3 as Controls
+import Material 0.3 as Material
 
 Item {
 
@@ -8,27 +8,27 @@ Item {
         anchors.centerIn: parent
         spacing: dp(20)
 
-        Button {
+        Material.Button {
             text: "Simple Button"
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: snackbar.open("Simple, isn't it?")
         }
 
-        Button {
+        Material.Button {
             text: "Raised Button"
             elevation: 1
             anchors.horizontalCenter: parent.horizontalCenter
             onClicked: snackbar.open("This is a snackbar")
         }
 
-        Button {
+        Material.Button {
             text: "Disabled Raised Button"
             elevation: 1
             enabled: false
             anchors.horizontalCenter: parent.horizontalCenter
         }
 
-        Button {
+        Material.Button {
             text: "Wide Button"
 
             width: dp(200)
@@ -38,7 +38,7 @@ Item {
             onClicked: snackbar.open("That button is wide, and so is this snackbar!")
         }
 
-        Button {
+        Material.Button {
             id: focusableButton
             text: "Focusable with really long text"
             elevation: 1
@@ -48,33 +48,33 @@ Item {
             onClicked: snackbar.open("The text is really very very very very very long and now it needs to wrap, so this should show as two lines!")
         }
 
-        Button {
+        Material.Button {
             text: "Colored button"
-            textColor: Theme.accentColor
+            textColor: Material.Theme.accentColor
             anchors.horizontalCenter: parent.horizontalCenter
 
             onClicked: snackbar.open("That button is colored!")
         }
 
-        Button {
+        Material.Button {
             text: "Focusable button #2"
             elevation: 1
             activeFocusOnPress: true
-            backgroundColor: Theme.primaryColor
+            backgroundColor: Material.Theme.primaryColor
             anchors.horizontalCenter: parent.horizontalCenter
 
             onClicked: snackbar.open("That button is colored!")
         }
     }
 
-    ActionButton {
+    Material.ActionButton {
         anchors {
             right: parent.right
             bottom: snackbar.top
             margins: dp(32)
         }
 
-        action: Action {
+        action: Material.Action {
             id: addContent
             text: "&Copy"
             shortcut: "Ctrl+C"
@@ -83,7 +83,7 @@ Item {
         iconName: "content/add"
     }
 
-    Snackbar {
+    Material.Snackbar {
         id: snackbar
     }
 }

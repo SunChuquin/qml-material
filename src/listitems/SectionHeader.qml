@@ -11,7 +11,8 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.3
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 /*!
    \qmltype SectionHeader
@@ -19,14 +20,14 @@ import Material 0.3
 
    \brief A list item that serves as the the header for an expandable list section.
  */
-BaseListItem {
+MaterialListItem.BaseListItem {
     id: listItem
 
     property alias text: label.text
     property alias iconName: icon.name
     property bool expanded: false
 
-    height: 48 * Units.dp
+    height: 48 * Material.Units.dp
 
     RowLayout {
         anchors.fill: parent
@@ -34,16 +35,16 @@ BaseListItem {
         anchors.leftMargin: listItem.margins
         anchors.rightMargin: listItem.margins
 
-        spacing: 16 * Units.dp
+        spacing: 16 * Material.Units.dp
 
         Item {
-            Layout.preferredWidth: 40 * Units.dp
+            Layout.preferredWidth: 40 * Material.Units.dp
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignCenter
 
             visible: children.length > 1 || iconName != ""
 
-            Icon {
+            Material.Icon {
                 id: icon
 
                 anchors {
@@ -52,13 +53,13 @@ BaseListItem {
                 }
 
                 visible: name != ""
-                color: listItem.expanded ? Theme.primaryColor
-                        : darkBackground ? Theme.dark.iconColor : Theme.light.iconColor
-                size: 24 * Units.dp
+                color: listItem.expanded ? Material.Theme.primaryColor
+                        : darkBackground ? Material.Theme.dark.iconColor : Material.Theme.light.iconColor
+                size: 24 * Material.Units.dp
             }
         }
 
-        Label {
+        Material.Label {
             id: label
 
             Layout.alignment: Qt.AlignVCenter
@@ -67,16 +68,16 @@ BaseListItem {
             elide: Text.ElideRight
             style: "subheading"
 
-            color: listItem.expanded ? Theme.primaryColor
-                    : darkBackground ? Theme.dark.textColor : Theme.light.textColor
+            color: listItem.expanded ? Material.Theme.primaryColor
+                    : darkBackground ? Material.Theme.dark.textColor : Material.Theme.light.textColor
         }
 
         Item {
-            Layout.preferredWidth: 40 * Units.dp
+            Layout.preferredWidth: 40 * Material.Units.dp
             Layout.preferredHeight: width
             Layout.alignment: Qt.AlignRight
 
-            Icon {
+            Material.Icon {
                 anchors {
                     verticalCenter: parent.verticalCenter
                     left: parent.left
@@ -84,8 +85,8 @@ BaseListItem {
 
                 name: "navigation/expand_more"
                 rotation: listItem.expanded ? 180 : 0
-                size: 24 * Units.dp
-                color: darkBackground ? Theme.dark.iconColor : Theme.light.iconColor
+                size: 24 * Material.Units.dp
+                color: darkBackground ? Material.Theme.dark.iconColor : Material.Theme.light.iconColor
 
                 Behavior on rotation {
                     NumberAnimation { duration: 200 }

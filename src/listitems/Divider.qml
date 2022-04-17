@@ -9,7 +9,7 @@
  */
 
 import QtQuick 2.4
-import Material 0.3
+import Material 0.3 as Material
 
 /*!
    \qmltype Divider
@@ -27,9 +27,9 @@ Item {
 
     property bool darkBackground
 
-	height: 16 * Units.dp
+    height: 16 * Material.Units.dp
 
-	ThinDivider {
+    Material.ThinDivider {
         anchors.verticalCenter: parent.verticalCenter
         darkBackground: divider.darkBackground
     }

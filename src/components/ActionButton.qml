@@ -11,7 +11,7 @@
 import QtQuick 2.4
 import QtQuick.Controls 1.3 as Controls
 import QtQuick.Controls.Styles 1.3 as ControlStyles
-import Material 0.3
+import Material 0.3 as Material
 import QtGraphicalEffects 1.0
 
 /*!
@@ -32,7 +32,7 @@ Controls.Button {
        The color of the action button. By default, this is the accent color of your
        app as defined by \l Theme::accentColor.
      */
-    property color backgroundColor: Theme.accentColor
+    property color backgroundColor: Material.Theme.accentColor
 
     /*!
        \internal
@@ -44,9 +44,9 @@ Controls.Button {
        The color of the icon displayed on the action button. By default, this is
        automatically selected based on the \l backgroundColor.
      */
-    property color iconColor: Theme.lightDark(button.backgroundColor,
-                                              Theme.light.iconColor,
-                                              Theme.dark.iconColor)
+    property color iconColor: Material.Theme.lightDark(button.backgroundColor,
+                                              Material.Theme.light.iconColor,
+                                              Material.Theme.dark.iconColor)
 
     /*!
        The name of the icon to display in the action button, selected from the Material
@@ -76,20 +76,20 @@ Controls.Button {
             RectangularGlow {
 
                 anchors.centerIn: parent
-                anchors.verticalCenterOffset: elevation == 1 ? 1.5 * Units.dp
-                                                             : 1 * Units.dp
+                anchors.verticalCenterOffset: elevation == 1 ? 1.5 * Material.Units.dp
+                                                             : 1 * Material.Units.dp
 
                 width: parent.width
                 height: parent.height
 
-                glowRadius: elevation == 1 ? 0.75 * Units.dp : 0.3 * Units.dp
+                glowRadius: elevation == 1 ? 0.75 * Material.Units.dp : 0.3 * Material.Units.dp
                 opacity: elevation == 1 ? 0.6 : 0.3
                 spread: elevation == 1 ? 0.7 : 0.85
                 color: "black"
                 cornerRadius: height/2
             }
 
-            View {
+            Material.View {
                 anchors.fill: parent
                 radius: width/2
 
@@ -100,14 +100,14 @@ Controls.Button {
                            (control.hovered && !button.elevation) ?
                            Qt.rgba(0,0,0, control.pressed ? 0.1 : 0.05) : "transparent"
 
-                Ink {
+                Material.Ink {
                     id: mouseArea
                     anchors.fill: parent
                     Connections {
                         target: control.__behavior
-                        onPressed: mouseArea.onPressed(mouse)
-                        onCanceled: mouseArea.onCanceled()
-                        onReleased: mouseArea.onReleased(mouse)
+                        function onPressed(mouse) { mouseArea.onPressed(mouse) }
+                        function onCanceled() { mouseArea.onCanceled() }
+                        function onReleased(mouse) { mouseArea.onReleased(mouse) }
                     }
 
                     circular: true
@@ -115,15 +115,15 @@ Controls.Button {
             }
         }
         label: Item {
-            implicitHeight: isMiniSize ? 40 * Units.dp : 56 * Units.dp
+            implicitHeight: isMiniSize ? 40 * Material.Units.dp : 56 * Material.Units.dp
             implicitWidth: implicitHeight
-            Icon {
+            Material.Icon {
                 id: icon
 
                 anchors.centerIn: parent
                 name: control.iconName
                 color: button.iconColor
-                size: 24 * Units.dp
+                size: 24 * Material.Units.dp
             }
         }
     }

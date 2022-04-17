@@ -11,8 +11,8 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
 
-import Material 0.3
-import Material.ListItems 0.1
+import Material 0.3 as Material
+import Material.ListItems 0.1 as MaterialListItem
 
 Item {
     id: tabBar
@@ -22,10 +22,10 @@ Item {
     property var tabs: []
     property int leftKeyline
 
-    property bool isLargeDevice: Device.type == Device.desktop || Device.type == Device.tablet
+    property bool isLargeDevice: Material.Device.type == Material.Device.desktop || Material.Device.type == Material.Device.tablet
 
     property bool fullWidth: isLargeDevice
-            ? false : width - maxTabsWidth <= 16 * Units.dp && tabsWidth <= width
+            ? false : width - maxTabsWidth <= 16 * Material.Units.dp && tabsWidth <= width
 
     property int tabsWidth: {
         var width = 0
@@ -47,23 +47,23 @@ Item {
         return tabWidth * tabRow.children.length
     }
 
-    property int tabPadding: isLargeDevice ? 24 * Units.dp : 12 * Units.dp
+    property int tabPadding: isLargeDevice ? 24 * Material.Units.dp : 12 * Material.Units.dp
 
-    property int tabMinWidth: isLargeDevice ? 160 * Units.dp : 72 * Units.dp
+    property int tabMinWidth: isLargeDevice ? 160 * Material.Units.dp : 72 * Material.Units.dp
 
     property int selectedIndex: 0
 
     property bool darkBackground
 
-    property color highlightColor: Theme.tabHighlightColor
-    property color textColor: darkBackground ? Theme.dark.textColor : Theme.light.accentColor
+    property color highlightColor: Material.Theme.tabHighlightColor
+    property color textColor: darkBackground ? Material.Theme.dark.textColor : Material.Theme.light.accentColor
 
     property bool isTabView: String(tabs).indexOf("TabView") != -1
 
     readonly property int tabCount: isTabView ? tabs.count : tabs.length
 
     visible: tabCount > 0
-    implicitHeight: 48 * Units.dp
+    implicitHeight: 48 * Material.Units.dp
 
     onTabCountChanged: {
         selectedIndex = Math.min(selectedIndex, tabCount)
@@ -162,7 +162,7 @@ Item {
                 bottom: parent.bottom
             }
 
-            height: 2 * Units.dp
+            height: 2 * Material.Units.dp
             color: tabBar.highlightColor
         }
     }
@@ -170,22 +170,22 @@ Item {
     Component {
         id: tabDelegate
 
-        View {
+        Material.View {
             id: tabItem
 
             width: tabBar.fullWidth ? tabBar.width/repeater.count : implicitWidth
             height: tabBar.height
 
             implicitWidth: isLargeDevice
-                    ? Math.min(2 * tabPadding + row.width, 264 * Units.dp)
-                    : Math.min(Math.max(2 * tabPadding + row.width, tabMinWidth), 264 * Units.dp)
+                    ? Math.min(2 * tabPadding + row.width, 264 * Material.Units.dp)
+                    : Math.min(Math.max(2 * tabPadding + row.width, tabMinWidth), 264 * Material.Units.dp)
 
 
             property bool selected: index == tabBar.selectedIndex
 
             property var tab: isTabView ? tabs.getTab(index) : modelData
 
-            Ink {
+            Material.Ink {
                 anchors.fill: parent
                 enabled: tab.enabled
                 onClicked: tabBar.selectedIndex = index
@@ -194,7 +194,7 @@ Item {
                     id: row
 
                     anchors.centerIn: parent
-                    spacing: 10 * Units.dp
+                    spacing: 10 * Material.Units.dp
 
                     Icon {
                         anchors.verticalCenter: parent.verticalCenter
@@ -203,8 +203,8 @@ Item {
                                 ? tabItem.tab.iconSource : tabItem.tab.hasOwnProperty("iconName")
                                 ? "icon://" + tabItem.tab.iconName : ""
                         color: tabItem.selected
-                                ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
-                                : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
+                                ? darkBackground ? Material.Theme.dark.iconColor : Material.Theme.light.accentColor
+                                : darkBackground ? Material.Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Material.Theme.light.shade(tab.enabled ? 0.6 : 0.2)
 
                         visible: source != "" && source != "icon://"
 
@@ -213,14 +213,14 @@ Item {
                         }
                     }
 
-                    Label {
+                    Material.Label {
                         id: label
 
                         text: typeof(tabItem.tab) == "string"
                                 ? tabItem.tab : tabItem.tab.title
                         color: tabItem.selected
-                                ? darkBackground ? Theme.dark.textColor : Theme.light.accentColor
-                                : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
+                                ? darkBackground ? Material.Theme.dark.textColor : Material.Theme.light.accentColor
+                                : darkBackground ? Material.Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Material.Theme.light.shade(tab.enabled ? 0.6 : 0.2)
 
                         style: "body2"
                         font.capitalization: Font.AllUppercase
@@ -232,14 +232,14 @@ Item {
                         }
                     }
 
-                    IconButton {
+                    Material.IconButton {
                         iconName: "navigation/close"
                         visible: tab.hasOwnProperty("canRemove") && tab.canRemove && (tabs.hasOwnProperty("removeTab") || tab.hasOwnProperty("close"))
                         color: tabItem.selected
-                                ? darkBackground ? Theme.dark.iconColor : Theme.light.accentColor
-                                : darkBackground ? Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Theme.light.shade(tab.enabled ? 0.6 : 0.2)
+                                ? darkBackground ? Material.Theme.dark.iconColor : Material.Theme.light.accentColor
+                                : darkBackground ? Material.Theme.dark.shade(tab.enabled ? 0.6 : 0.2) : Material.Theme.light.shade(tab.enabled ? 0.6 : 0.2)
                         onClicked: tabBar.removeTab(tab, index)
-                        size: 20 * Units.dp
+                        size: 20 * Material.Units.dp
                     }
                 }
             }

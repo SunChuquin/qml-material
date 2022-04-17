@@ -10,11 +10,11 @@
  */
 
 import QtQuick 2.4
-import QtQuick.Controls.Styles 1.3
+import QtQuick.Controls.Styles 1.3 as QuickControlsStyle
 import QtQuick.Layouts 1.1
-import Material 0.3
+import Material 0.3 as Material
 
-TextFieldStyle {
+QuickControlsStyle.TextFieldStyle {
     id: style
 
     padding {
@@ -26,21 +26,21 @@ TextFieldStyle {
 
     font {
         family: echoMode == TextInput.Password ? "Default" : "Roboto"
-        pixelSize: 16 * Units.dp
+        pixelSize: 16 * Material.Units.dp
     }
 
     renderType: Text.QtRendering
     placeholderTextColor: "transparent"
     selectedTextColor: "white"
-    selectionColor: control.hasOwnProperty("color") ? control.color : Theme.accentColor
-    textColor: Theme.light.textColor
+    selectionColor: control.hasOwnProperty("color") ? control.color : Material.Theme.accentColor
+    textColor: Material.Theme.light.textColor
 
     background : Item {
         id: background
 
-        property color color: control.hasOwnProperty("color") ? control.color : Theme.accentColor
+        property color color: control.hasOwnProperty("color") ? control.color : Material.Theme.accentColor
         property color errorColor: control.hasOwnProperty("errorColor")
-                ? control.errorColor : Palette.colors["red"]["500"]
+                ? control.errorColor : Material.Palette.colors["red"]["500"]
         property string helperText: control.hasOwnProperty("helperText") ? control.helperText : ""
         property bool floatingLabel: control.hasOwnProperty("floatingLabel") ? control.floatingLabel : ""
         property bool hasError: control.hasOwnProperty("hasError")
@@ -52,9 +52,9 @@ TextFieldStyle {
             id: underline
             color: background.hasError ? background.errorColor
                                     : control.activeFocus ? background.color
-                                                          : Theme.light.hintColor
+                                                          : Material.Theme.light.hintColor
 
-            height: control.activeFocus ? 2 * Units.dp : 1 * Units.dp
+            height: control.activeFocus ? 2 * Material.Units.dp : 1 * Material.Units.dp
             visible: background.showBorder
 
             anchors {
@@ -73,16 +73,16 @@ TextFieldStyle {
         }
 
 
-        Label {
+        Material.Label {
             id: fieldPlaceholder
 
             anchors.verticalCenter: parent.verticalCenter
             text: control.placeholderText
-            font.pixelSize: 16 * Units.dp
-            anchors.margins: -12 * Units.dp
+            font.pixelSize: 16 * Material.Units.dp
+            anchors.margins: -12 * Material.Units.dp
             color: background.hasError ? background.errorColor
                                   : control.activeFocus && control.text !== ""
-                                        ? background.color : Theme.light.hintColor
+                                        ? background.color : Material.Theme.light.hintColor
 
             states: [
                 State {
@@ -95,7 +95,7 @@ TextFieldStyle {
                     }
                     PropertyChanges {
                         target: fieldPlaceholder
-                        font.pixelSize: 12 * Units.dp
+                        font.pixelSize: 12 * Material.Units.dp
                     }
                 },
                 State {
@@ -130,16 +130,16 @@ TextFieldStyle {
                 left: parent.left
                 right: parent.right
                 top: underline.top
-                topMargin: 4 * Units.dp
+                topMargin: 4 * Material.Units.dp
             }
 
-            Label {
+            Material.Label {
                 id: helperTextLabel
                 visible: background.helperText && background.showBorder
                 text: background.helperText
-                font.pixelSize: 12 * Units.dp
+                font.pixelSize: 12 * Material.Units.dp
                 color: background.hasError ? background.errorColor
-                                           : Qt.darker(Theme.light.hintColor)
+                                           : Qt.darker(Material.Theme.light.hintColor)
 
                 Behavior on color {
                     ColorAnimation { duration: 200 }
@@ -149,13 +149,13 @@ TextFieldStyle {
                         ? control.helperText : ""
             }
 
-            Label {
+            Material.Label {
                 id: charLimitLabel
                 Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
                 visible: background.characterLimit && background.showBorder
                 text: control.length + " / " + background.characterLimit
-                font.pixelSize: 12 * Units.dp
-                color: background.hasError ? background.errorColor : Theme.light.hintColor
+                font.pixelSize: 12 * Material.Units.dp
+                color: background.hasError ? background.errorColor : Material.Theme.light.hintColor
                 horizontalAlignment: Text.AlignLeft
 
                 Behavior on color {
