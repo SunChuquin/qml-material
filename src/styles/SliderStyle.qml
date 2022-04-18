@@ -231,7 +231,8 @@ QuickControlsStyle.SliderStyle {
                 id: handleLoader
                 sourceComponent: handle
                 anchors.verticalCenter: grooveLoader.verticalCenter
-                x: Math.round((control.__handlePos - control.minimumValue) / (control.maximumValue - control.minimumValue) * ((horizontal ? root.width : root.height) - item.width))
+//                x: Math.round((control.__handlePos - control.minimumValue) / (control.maximumValue - control.minimumValue) * ((horizontal ? root.width : root.height) - item.width))
+                x: Math.round((control.__handlePos - control.minimumValue) / (control.maximumValue - control.minimumValue) * 161)
 
                 Behavior on x {
                     NumberAnimation { duration: 100 }

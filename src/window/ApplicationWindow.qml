@@ -157,7 +157,7 @@ Controls.ApplicationWindow {
         errorDialog.negativeButtonText = secondaryButtonText ? secondaryButtonText : "Close"
         errorDialog.positiveButton.visible = retry || false
 
-        errorDialog.promise = new Quick.Promises.Promise()
+        errorDialog.promise = new Material.Promises.Promise()
         errorDialog.title = title
         errorDialog.text = text
         errorDialog.open()

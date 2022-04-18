@@ -16,6 +16,7 @@
 	<file>View.qml</file>
 	<file>awesome.js</file>
 	<file>utils.js</file>
+	<file>promises.js</file>
 </qresource>
 
 </RCC>
