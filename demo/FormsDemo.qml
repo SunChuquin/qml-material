@@ -1,34 +1,35 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.3 as Material
-import Material.ListItems 0.1 as MaterialListItem
+import Material 0.2
+import Material.ListItems 0.1 as ListItem
+import Material.Extras 0.1
 
 Item {
-    Material.View {
+    View {
         anchors.centerIn: parent
 
-        width: dp(350)
-        height: column.implicitHeight + dp(32)
+        width: Units.dp(350)
+        height: column.implicitHeight + Units.dp(32)
 
         elevation: 1
-        radius: dp(2)
+        radius: Units.dp(2)
 
         ColumnLayout {
             id: column
 
             anchors {
                 fill: parent
-                topMargin: dp(16)
-                bottomMargin: dp(16)
+                topMargin: Units.dp(16)
+                bottomMargin: Units.dp(16)
             }
 
-            Material.Label {
+            Label {
                 id: titleLabel
 
                 anchors {
                     left: parent.left
                     right: parent.right
-                    margins: dp(16)
+                    margins: Units.dp(16)
                 }
 
                 style: "title"
@@ -37,16 +38,16 @@ Item {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: dp(8)
+                Layout.preferredHeight: Units.dp(8)
             }
 
-            MaterialListItem.Standard {
-                action: Material.Icon {
+            ListItem.Standard {
+                action: Icon {
                     anchors.centerIn: parent
                     name: "action/account_circle"
                 }
 
-                content: Material.TextField {
+                content: TextField {
                     anchors.centerIn: parent
                     width: parent.width
 
@@ -54,13 +55,13 @@ Item {
                 }
             }
 
-            MaterialListItem.Standard {
-                action: Material.Icon {
+            ListItem.Standard {
+                action: Icon {
                     anchors.centerIn: parent
                     name: "maps/place"
                 }
 
-                content: Material.TextField {
+                content: TextField {
                     anchors.centerIn: parent
                     width: parent.width
 
@@ -68,28 +69,28 @@ Item {
                 }
             }
 
-            MaterialListItem.Standard {
+            ListItem.Standard {
                 action: Item {}
 
                 content: RowLayout {
                     anchors.centerIn: parent
                     width: parent.width
 
-                    Material.TextField {
+                    TextField {
                         Layout.alignment: Qt.AlignVCenter
                         Layout.preferredWidth: 0.4 * parent.width
 
                         text: "New York"
                     }
 
-                    Material.MenuField {
+                    MenuField {
                         Layout.alignment: Qt.AlignVCenter
                         Layout.preferredWidth: 0.2 * parent.width
 
                         model: ["NY", "NC", "ND"]
                     }
 
-                    Material.TextField {
+                    TextField {
                         Layout.alignment: Qt.AlignVCenter
                         Layout.preferredWidth: 0.3 * parent.width
 
@@ -98,13 +99,13 @@ Item {
                 }
             }
 
-            MaterialListItem.Standard {
-                action: Material.Icon {
+            ListItem.Standard {
+                action: Icon {
                     anchors.centerIn: parent
                     name: "communication/email"
                 }
 
-                content: Material.TextField {
+                content: TextField {
                     anchors.centerIn: parent
                     width: parent.width
 
@@ -114,26 +115,26 @@ Item {
 
             Item {
                 Layout.fillWidth: true
-                Layout.preferredHeight: dp(8)
+                Layout.preferredHeight: Units.dp(8)
             }
 
             RowLayout {
                 Layout.alignment: Qt.AlignRight
-                spacing: dp(8)
+                spacing: Units.dp(8)
 
                 anchors {
                     right: parent.right
-                    margins: dp(16)
+                    margins: Units.dp(16)
                 }
 
-                Material.Button {
+                Button {
                     text: "Cancel"
-                    textColor: Material.Theme.primaryColor
+                    textColor: Theme.primaryColor
                 }
 
-                Material.Button {
+                Button {
                     text: "Done"
-                    textColor: Material.Theme.primaryColor
+                    textColor: Theme.primaryColor
                 }
             }
         }

@@ -1,10 +1,10 @@
 import QtQuick 2.4
-import Material 0.3 as Material
+import Material 0.2
 
 
 Item {
 
-    Material.TimePickerDialog {
+    TimePickerDialog {
         id: timePicker
         onTimePicked: {
             updateLabelForDate(timePicked)
@@ -14,9 +14,9 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: dp(20)
+        spacing: Units.dp(20)
 
-        Material.Button {
+        Button {
             text: "Show Time Picker Dialog"
             anchors.horizontalCenter: parent.horizontalCenter
             elevation: 1
@@ -25,7 +25,7 @@ Item {
             }
         }
 
-        Material.Label {
+        Label {
             id: timeLabel
             style: "display1"
             anchors.horizontalCenter: parent.horizontalCenter
@@ -33,14 +33,14 @@ Item {
 
         Row {
             anchors.horizontalCenter: parent.horizontalCenter
-            spacing: dp(16)
+            spacing: Units.dp(16)
 
-            Material.Label {
+            Label {
                 text: "24 hour clock:"
                 style: "dialog"
             }
 
-            Material.Switch {
+            Switch {
                 id: twentyFourHourSwitch
                 checked: false
             }

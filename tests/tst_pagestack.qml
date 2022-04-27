@@ -18,23 +18,23 @@
 
 import QtQuick 2.4
 import QtTest 1.0
-import Material 0.3 as Material
+import Material 0.2
 
 Rectangle {
     width: 100
     height: 100
 
-    Material.ApplicationWindow {
+    ApplicationWindow {
         id: mainwin
         title: "Application Name"
         width: 100
         height: 100
 
-        initialPage: Material.Page {
+        initialPage: Page {
             id: page
             title: "Page Title"
 
-            Material.Label {
+            Label {
                 anchors.centerIn: parent
                 text: "Hello World!"
             }

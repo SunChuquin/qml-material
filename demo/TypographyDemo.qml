@@ -1,7 +1,7 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.3 as Material
-import Material.ListItems 0.1 as MaterialListItem
+import Material 0.2
+import Material.ListItems 0.1 as ListItem
 
 Item {
 
@@ -23,60 +23,60 @@ Item {
 
     ColumnLayout {
         id: column
-        spacing: dp(16)
+        spacing: Units.dp(16)
 
-        MaterialListItem.Subheader {
+        ListItem.Subheader {
             text: "Font Weights"
         }
 
-        Material.Label {
+        Label {
             font.family: "Roboto"
             font.weight: Font.Light
             text: "Roboto Light"
-            font.pixelSize: dp(34)
+            font.pixelSize: Units.dp(34)
 
             anchors {
                 left: parent.left
-                margins: dp(16)
+                margins: Units.dp(16)
             }
         }
 
-        Material.Label {
+        Label {
             font.family: "Roboto"
             text: "Roboto Regular"
-            font.pixelSize: dp(34)
+            font.pixelSize: Units.dp(34)
 
             anchors {
                 left: parent.left
-                margins: dp(16)
+                margins: Units.dp(16)
             }
         }
 
-        Material.Label {
+        Label {
             font.family: "Roboto"
             font.weight: Font.DemiBold
             text: "Roboto Medium"
-            font.pixelSize: dp(34)
+            font.pixelSize: Units.dp(34)
 
             anchors {
                 left: parent.left
-                margins: dp(16)
+                margins: Units.dp(16)
             }
         }
 
-        Material.Label {
+        Label {
             font.family: "Roboto"
             font.weight: Font.Bold
             text: "Roboto Bold"
-            font.pixelSize: dp(34)
+            font.pixelSize: Units.dp(34)
 
             anchors {
                 left: parent.left
-                margins: dp(16)
+                margins: Units.dp(16)
             }
         }
 
-        MaterialListItem.Subheader {
+        ListItem.Subheader {
             text: "Label Styles"
         }
 
@@ -85,15 +85,15 @@ Item {
             delegate: Row {
                 anchors {
                     left: parent.left
-                    margins: dp(16)
+                    margins: Units.dp(16)
                 }
 
-                Material.Label {
+                Label {
                     text: modelData
-                    width: dp(100)
+                    width: Units.dp(100)
                 }
 
-                Material.Label {
+                Label {
                     style: modelData
                     text: {
                         var text = fontInfo["font"].substring(0,1).toUpperCase() + fontInfo["font"].substring(1)

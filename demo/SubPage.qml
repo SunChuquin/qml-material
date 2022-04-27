@@ -16,29 +16,29 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 import QtQuick 2.4
-import Material 0.3 as Material
+import Material 0.2
 import Material.ListItems 0.1 as ListItem
 
-Material.TabbedPage {
+TabbedPage {
     id: page
     title: "Page Title that is very long to demonstrate eliding titles in ActionBar"
 
-    actionBar.backgroundColor: Material.Palette.colors.grey['200']
-    actionBar.decorationColor: Material.Palette.colors.grey['300']
+    actionBar.backgroundColor: Palette.colors.grey['200']
+    actionBar.decorationColor: Palette.colors.grey['300']
 
     onGoBack: {
         confirmationDialog.show()
         event.accepted = true
     }
 
-    Material.Tab {
+    Tab {
         title: "Overview"
         iconName: "action/home"
 
         Rectangle {
-            color: Material.Palette.colors.red["200"]
+            color: Palette.colors.red["200"]
 
-            Material.Button {
+            Button {
                 anchors.centerIn: parent
                 darkBackground: true
                 text: "Go to tab 3"
@@ -47,25 +47,25 @@ Material.TabbedPage {
         }
     }
 
-    Material.Tab {
+    Tab {
         title: "Projects"
 
-        Rectangle { color: Material.Palette.colors.purple["200"] }
+        Rectangle { color: Palette.colors.purple["200"] }
     }
 
-    Material.Tab {
+    Tab {
         title: "Inbox"
 
-        Rectangle { color: Material.Palette.colors.orange["200"] }
+        Rectangle { color: Palette.colors.orange["200"] }
     }
 
-    Material.Tab {
+    Tab {
         title: "Disabled Tab"
         enabled: false
-        Rectangle { color: Material.Palette.colors.purple["200"] }
+        Rectangle { color: Palette.colors.purple["200"] }
     }
 
-    Material.Dialog {
+    Dialog {
         id: confirmationDialog
 
         title: "Do you want to go back?"

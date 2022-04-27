@@ -18,7 +18,7 @@
 
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.2 as Material
+import Material 0.2
 
 Item {
     implicitHeight: palette.height
@@ -27,8 +27,8 @@ Item {
         id: palette
         anchors.centerIn: parent
         width: parent.width
-        columns: parseInt(parent.width / dp(300)) || 1
-        rowSpacing: dp(20)
+        columns: parseInt(parent.width / Units.dp(300)) || 1
+        rowSpacing: Units.dp(20)
 
         Repeater {
             model: [ "Red", "Pink", "Purple", "Deep Purple", "Indigo",
@@ -38,46 +38,46 @@ Item {
 
             ColumnLayout {
                 Layout.alignment: Qt.AlignCenter
-                spacing: dp(5)
+                spacing: Units.dp(5)
                 property var currentColor: modelData.charAt(0).toLowerCase() +
                                            modelData.slice(1).replace(" ", "")
 
                 Rectangle {
-                    width: dp(300)
-                    height: dp(126)
-                    color: Material.Palette.colors[currentColor]["500"]
+                    width: Units.dp(300)
+                    height: Units.dp(126)
+                    color: Palette.colors[currentColor]["500"]
 
-                    Material.Label {
+                    Label {
                         anchors.top: parent.top
                         anchors.left: parent.left
-                        anchors.margins: dp(16)
+                        anchors.margins: Units.dp(16)
                         text: modelData
                         style: "body2"
-                        color: Material.Theme.lightDark(parent.color,
-                                               Material.Theme.light.textColor,
-                                               Material.Theme.dark.textColor)
+                        color: Theme.lightDark(parent.color,
+                                               Theme.light.textColor,
+                                               Theme.dark.textColor)
                     }
 
-                    Material.Label {
+                    Label {
                         anchors.left: parent.left
                         anchors.bottom: parent.bottom
-                        anchors.margins: dp(16)
+                        anchors.margins: Units.dp(16)
                         text: "500"
                         style: "body2"
-                        color: Material.Theme.lightDark(parent.color,
-                                               Material.Theme.light.textColor,
-                                               Material.Theme.dark.textColor)
+                        color: Theme.lightDark(parent.color,
+                                               Theme.light.textColor,
+                                               Theme.dark.textColor)
                     }
 
-                    Material.Label {
+                    Label {
                         anchors.right: parent.right
                         anchors.bottom: parent.bottom
-                        anchors.margins: dp(16)
-                        text: Material.Palette.colors[currentColor]["500"]
+                        anchors.margins: Units.dp(16)
+                        text: Palette.colors[currentColor]["500"]
                         style: "body2"
-                        color: Material.Theme.lightDark(parent.color,
-                                               Material.Theme.light.textColor,
-                                               Material.Theme.dark.textColor)
+                        color: Theme.lightDark(parent.color,
+                                               Theme.light.textColor,
+                                               Theme.dark.textColor)
                     }
                 }
 
@@ -88,30 +88,30 @@ Item {
                         model: ["100", "200", "300", "400", "600", "700", "800", "900"]
 
                         Rectangle {
-                            width: dp(300)
-                            height: dp(46)
-                            color: Material.Palette.colors[currentColor][modelData]
+                            width: Units.dp(300)
+                            height: Units.dp(46)
+                            color: Palette.colors[currentColor][modelData]
 
-                            Material.Label {
+                            Label {
                                 anchors.left: parent.left
-                                anchors.margins: dp(16)
+                                anchors.margins: Units.dp(16)
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: modelData
                                 style: "body2"
-                                color: Material.Theme.lightDark(parent.color,
-                                                       Material.Theme.light.textColor,
-                                                       Material.Theme.dark.textColor)
+                                color: Theme.lightDark(parent.color,
+                                                       Theme.light.textColor,
+                                                       Theme.dark.textColor)
                             }
 
-                            Material.Label {
+                            Label {
                                 anchors.right: parent.right
-                                anchors.margins: dp(16)
+                                anchors.margins: Units.dp(16)
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: Material.Palette.colors[currentColor][modelData]
+                                text: Palette.colors[currentColor][modelData]
                                 style: "body2"
-                                color: Material.Theme.lightDark(parent.color,
-                                                       Material.Theme.light.textColor,
-                                                       Material.Theme.dark.textColor)
+                                color: Theme.lightDark(parent.color,
+                                                       Theme.light.textColor,
+                                                       Theme.dark.textColor)
                             }
                         }
                     }
@@ -119,36 +119,36 @@ Item {
 
                 ColumnLayout {
                     spacing: 0
-                    visible: typeof Material.Palette.colors[currentColor]["A100"] != 'undefined'
+                    visible: typeof Palette.colors[currentColor]["A100"] != 'undefined'
 
                     Repeater {
                         model: visible ? ["A100", "A200", "A400", "A700"] : 0
 
                         Rectangle {
-                            width: dp(300)
-                            height: dp(46)
-                            color: Material.Palette.colors[currentColor][modelData]
+                            width: Units.dp(300)
+                            height: Units.dp(46)
+                            color: Palette.colors[currentColor][modelData]
 
-                            Material.Label {
+                            Label {
                                 anchors.left: parent.left
-                                anchors.margins: dp(16)
+                                anchors.margins: Units.dp(16)
                                 anchors.verticalCenter: parent.verticalCenter
                                 text: modelData
                                 style: "body2"
-                                color: Material.Theme.lightDark(parent.color,
-                                                       Material.Theme.light.textColor,
-                                                       Material.Theme.dark.textColor)
+                                color: Theme.lightDark(parent.color,
+                                                       Theme.light.textColor,
+                                                       Theme.dark.textColor)
                             }
 
-                            Material.Label {
+                            Label {
                                 anchors.right: parent.right
-                                anchors.margins: dp(16)
+                                anchors.margins: Units.dp(16)
                                 anchors.verticalCenter: parent.verticalCenter
-                                text: Material.Palette.colors[currentColor][modelData]
+                                text: Palette.colors[currentColor][modelData]
                                 style: "body2"
-                                color: Material.Theme.lightDark(parent.color,
-                                                       Material.Theme.light.textColor,
-                                                       Material.Theme.dark.textColor)
+                                color: Theme.lightDark(parent.color,
+                                                       Theme.light.textColor,
+                                                       Theme.dark.textColor)
                             }
                         }
                     }

@@ -1,6 +1,6 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.3 as Material
+import Material 0.2
 
 ColumnLayout {
     spacing: 0
@@ -11,34 +11,34 @@ ColumnLayout {
         Rectangle {
             Layout.fillHeight: true
             Layout.fillWidth: true
-            Layout.minimumHeight: grid.height + dp(80)
-            Layout.minimumWidth: grid.width + dp(80)
+            Layout.minimumHeight: grid.height + Units.dp(80)
+            Layout.minimumWidth: grid.width + Units.dp(80)
             color: index == 0 ? "#EEE" : "#333"
 
             GridLayout {
                 id: grid
                 anchors.centerIn: parent
-                rowSpacing: dp(20)
-                columnSpacing: dp(10)
+                rowSpacing: Units.dp(20)
+                columnSpacing: Units.dp(10)
                 columns: 2
 
-                Material.Label {
+                Label {
                     text: "Normal"
-                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
+                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                 }
 
-                Material.Slider {
+                Slider {
                     Layout.alignment: Qt.AlignCenter
                     value: 0.2
                     darkBackground: index == 1
                 }
 
-                Material.Label {
+                Label {
                     text: "Tickmarks"
-                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
+                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                 }
 
-                Material.Slider {
+                Slider {
                     Layout.alignment: Qt.AlignCenter
                     value: 40
                     tickmarksEnabled: true
@@ -48,13 +48,13 @@ ColumnLayout {
                     darkBackground: index == 1
                 }
 
-                Material.Label {
+                Label {
                     text: "Numeric Value Label"
                     Layout.alignment:  Qt.AlignBottom
-                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
+                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                 }
 
-                Material.Slider {
+                Slider {
                     Layout.alignment: Qt.AlignCenter
                     value: 60
                     tickmarksEnabled: true
@@ -65,14 +65,14 @@ ColumnLayout {
                     darkBackground: index == 1
                 }
 
-                Material.Label {
+                Label {
                     text: "Numeric Value Label + Active Focus on Press"
                     wrapMode: Text.WordWrap
                     Layout.alignment:  Qt.AlignBottom
-                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
+                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                 }
 
-                Material.Slider {
+                Slider {
                     Layout.alignment: Qt.AlignCenter
                     value: 80
                     focus: true
@@ -85,14 +85,14 @@ ColumnLayout {
                     darkBackground: index == 1
                 }
 
-                Material.Label {
+                Label {
                     text: "Customized Numeric Value Label"
                     wrapMode: Text.WordWrap
                     Layout.alignment:  Qt.AlignBottom
-                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
+                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                 }
 
-                Material.Slider {
+                Slider {
                     Layout.alignment: Qt.AlignCenter
                     numericValueLabel: true
                     stepSize: 1
@@ -100,16 +100,16 @@ ColumnLayout {
                     maximumValue: 100
                     alwaysShowValueLabel: true
                     knobLabel: value + "%"
-                    knobDiameter: dp(42)
+                    knobDiameter: Units.dp(42)
                     darkBackground: index == 1
                 }
 
-                Material.Label {
+                Label {
                     text: "Disabled"
-                    color: index == 0 ? Material.Theme.light.textColor : Material.Theme.dark.textColor
+                    color: index == 0 ? Theme.light.textColor : Theme.dark.textColor
                 }
 
-                Material.Slider {
+                Slider {
                     enabled: false
                     Layout.alignment: Qt.AlignCenter
                     darkBackground: index == 1

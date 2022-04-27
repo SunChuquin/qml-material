@@ -1,31 +1,33 @@
 import QtQuick 2.4
 import QtQuick.Layouts 1.1
-import Material 0.3 as Material
+import Material 0.2
+import Material.ListItems 0.1 as ListItem
+import Material.Extras 0.1
 
 ColumnLayout {
 
-    Material.Dialog {
+    Dialog {
         id: datePickerDialog
         hasActions: true
         contentMargins: 0
         floatingActions: true
 
-        Material.DatePicker {
+        DatePicker {
             frameVisible: false
-            dayAreaBottomMargin : dp(48)
+            dayAreaBottomMargin : Units.dp(48)
         }
 
     }
 
-    Material.Dialog {
+    Dialog {
         id: landscapeDatePickerDialog
         hasActions: true
         contentMargins: 0
         floatingActions: true
 
-        Material.DatePicker {
+        DatePicker {
             frameVisible: false
-            dayAreaBottomMargin : dp(48)
+            dayAreaBottomMargin : Units.dp(48)
             isLandscape: true
         }
 
@@ -33,9 +35,9 @@ ColumnLayout {
 
     ColumnLayout {
         anchors.centerIn: parent
-        spacing: dp(16)
+        spacing: Units.dp(16)
 
-        Material.Button {
+        Button {
             Layout.alignment: Qt.AlignCenter
             text: "Show DatePicker Dialog"
             elevation: 1
@@ -44,7 +46,7 @@ ColumnLayout {
             }
         }
 
-        Material.Button {
+        Button {
             Layout.alignment: Qt.AlignCenter
             text: "Show Landscape DatePicker Dialog"
             elevation: 1
@@ -53,11 +55,11 @@ ColumnLayout {
             }
         }
 
-        Material.DatePicker {
+        DatePicker {
             Layout.alignment: Qt.AlignCenter
         }
 
-        Material.DatePicker {
+        DatePicker {
             Layout.alignment: Qt.AlignCenter
             isLandscape: true
         }

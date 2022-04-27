@@ -1,22 +1,22 @@
 import QtQuick 2.4
-import QtQuick.Controls 1.3 as Controls
-import Material 0.3 as Material
+import QtQuick.Controls 1.3 as QuickControls
+import Material 0.2
 import Material.Extras 0.1
 
 Item {
 
-    Material.Dialog {
+    Dialog {
         id: alertNoTitleBar
-        width: dp(300)
+        width: Units.dp(300)
         text: "Discard draft?"
         hasActions: true
         positiveButtonText: "discard"
         negativeButtonText: "cancel"
     }
 
-    Material.Dialog {
+    Dialog {
         id: alertWithTitleBar
-        width: dp(300)
+        width: Units.dp(300)
         title: "Use Google's location service?"
         text: "Let Google help apps determine location. This means sending anonymous location data to Google, even when no apps are running."
         hasActions: true
@@ -24,12 +24,12 @@ Item {
         negativeButtonText: "disagree"
     }
 
-    Material.Dialog {
+    Dialog {
         id: textFieldDialog
         title: "Change Text"
         hasActions: true
 
-        Material.TextField {
+        TextField {
             id: optionText
             width: parent.width
             placeholderText: "New Option to Confirm"
@@ -40,48 +40,48 @@ Item {
         }
     }
 
-    Material.Dialog {
+    Dialog {
         id: scrollingDialog
         title: "Phone ringtone"
 
-        Controls.ExclusiveGroup {
+        QuickControls.ExclusiveGroup {
             id: optionGroup
         }
 
-        Material.RadioButton {
+        RadioButton {
             text: "None"
             checked: true
             exclusiveGroup: optionGroup
         }
-        Material.RadioButton {
+        RadioButton {
             text: "Callisto"
             exclusiveGroup: optionGroup
         }
-        Material.RadioButton {
+        RadioButton {
             text: "Dione"
             exclusiveGroup: optionGroup
         }
-        Material.RadioButton {
+        RadioButton {
             text: "Ganymede"
             exclusiveGroup: optionGroup
         }
-        Material.RadioButton {
+        RadioButton {
             text: "Hangouts Call"
             exclusiveGroup: optionGroup
         }
-        Material.RadioButton {
+        RadioButton {
             text: "Luna"
             exclusiveGroup: optionGroup
         }
-        Material.RadioButton {
+        RadioButton {
             text: "Oberon"
             exclusiveGroup: optionGroup
         }
-        Material.RadioButton {
+        RadioButton {
             text: "Phobos"
             exclusiveGroup: optionGroup
         }
-        Material.RadioButton {
+        RadioButton {
             text: "Pyxis"
             exclusiveGroup: optionGroup
         }
@@ -89,9 +89,9 @@ Item {
 
     Column {
         anchors.centerIn: parent
-        spacing: dp(20)
+        spacing: Units.dp(20)
 
-        Material.Button {
+        Button {
             text: "Show alert without title bar"
             anchors.horizontalCenter: parent.horizontalCenter
             elevation: 1
@@ -100,7 +100,7 @@ Item {
             }
         }
 
-        Material.Button {
+        Button {
             text: "Show alert with title bar"
             anchors.horizontalCenter: parent.horizontalCenter
             elevation: 1
@@ -109,7 +109,7 @@ Item {
             }
         }
 
-        Material.Button {
+        Button {
             text: "Show text field dialog"
             anchors.horizontalCenter: parent.horizontalCenter
             elevation: 1
@@ -118,7 +118,7 @@ Item {
             }
         }
 
-        Material.Button {
+        Button {
             text: "Show scrolling dialog"
             anchors.horizontalCenter: parent.horizontalCenter
             elevation: 1
@@ -128,7 +128,7 @@ Item {
         }
     }
 
-    Material.Snackbar {
+    Snackbar {
         id: dialogSnackBar
     }
 }

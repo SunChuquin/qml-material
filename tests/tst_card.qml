@@ -18,9 +18,9 @@
 
 import QtQuick 2.4
 import QtTest 1.0
-import Material 0.3 as Material
+import Material 0.2
 
-Material.Card {
+Card {
     width: 100
     height: 100
     id: card

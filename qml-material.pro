@@ -1,5 +1,4 @@
 TEMPLATE = subdirs
+SUBDIRS = modules/Material modules/Material/Extras modules/QtQuick/Controls/Styles/Material tests
 
-SUBDIRS = src demo tests
-
-OTHER_FILES = $$PWD/README.md $$PWD/CHANGELOG.md
+OTHER_FILES = README.md CHANGELOG.md

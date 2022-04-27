@@ -1,8 +1,8 @@
 import QtQuick 2.4
-import Material 0.3 as Material
-import Material.ListItems 0.1 as MaterialListItem
+import Material 0.2
+import Material.ListItems 0.1 as ListItem
 
-Material.ApplicationWindow {
+ApplicationWindow {
     id: demo
 
     title: "Material for QtQuick Demo"
@@ -17,7 +17,7 @@ Material.ApplicationWindow {
     }
 
     property var styles: [
-            "Custom Icons", "Color Palette", "Typography"
+            "Icons", "Custom Icons", "Color Palette", "Typography"
     ]
 
     property var basicComponents: [
@@ -35,7 +35,7 @@ Material.ApplicationWindow {
 
     property string selectedComponent: sections[0][0]
 
-    initialPage: Material.TabbedPage {
+    initialPage: TabbedPage {
         id: page
 
         title: "Demo"
@@ -43,37 +43,37 @@ Material.ApplicationWindow {
         actionBar.maxActionCount: navDrawer.enabled ? 3 : 4
 
         actions: [
-            Material.Action {
+            Action {
                 iconName: "alert/warning"
                 name: "Dummy error"
                 onTriggered: demo.showError("Something went wrong", "Do you want to retry?", "Close", true)
             },
 
-            Material.Action {
+            Action {
                 iconName: "image/color_lens"
                 name: "Colors"
                 onTriggered: colorPicker.show()
             },
 
-            Material.Action {
+            Action {
                 iconName: "action/settings"
                 name: "Settings"
                 hoverAnimation: true
             },
 
-            Material.Action {
+            Action {
                 iconName: "alert/warning"
                 name: "THIS SHOULD BE HIDDEN!"
                 visible: false
             },
 
-            Material.Action {
+            Action {
                 iconName: "action/language"
                 name: "Language"
                 enabled: false
             },
 
-            Material.Action {
+            Action {
                 iconName: "action/account_circle"
                 name: "Accounts"
             }
@@ -81,10 +81,10 @@ Material.ApplicationWindow {
 
         backAction: navDrawer.action
 
-        Material.NavigationDrawer {
+        NavigationDrawer {
             id: navDrawer
 
-            enabled: page.width < dp(500)
+            enabled: page.width < Units.dp(500)
 
             onEnabledChanged: smallLoader.active = enabled
 
@@ -103,13 +103,13 @@ Material.ApplicationWindow {
                         delegate: Column {
                             width: parent.width
 
-                            MaterialListItem.Subheader {
+                            ListItem.Subheader {
                                 text: sectionTitles[index]
                             }
 
                             Repeater {
                                 model: modelData
-                                delegate: MaterialListItem.Standard {
+                                delegate: ListItem.Standard {
                                     text: modelData
                                     selected: modelData == demo.selectedComponent
                                     onClicked: {
@@ -127,7 +127,7 @@ Material.ApplicationWindow {
         Repeater {
             model: !navDrawer.enabled ? sections : 0
 
-            delegate: Material.Tab {
+            delegate: Tab {
                 title: sectionTitles[index]
 
                 property string selectedComponent: modelData[0]
@@ -148,21 +148,21 @@ Material.ApplicationWindow {
         }
     }
 
-    Material.Dialog {
+    Dialog {
         id: colorPicker
         title: "Pick color"
 
         positiveButtonText: "Done"
 
-        Material.MenuField {
+        MenuField {
             id: selection
             model: ["Primary color", "Accent color", "Background color"]
-            width: dp(160)
+            width: Units.dp(160)
         }
 
         Grid {
             columns: 7
-            spacing: dp(8)
+            spacing: Units.dp(8)
 
             Repeater {
                 model: [
@@ -174,14 +174,14 @@ Material.ApplicationWindow {
                 ]
 
                 Rectangle {
-                    width: dp(30)
-                    height: dp(30)
-                    radius: dp(2)
-                    color: Material.Palette.colors[modelData]["500"]
-                    border.width: modelData === "white" ? dp(2) : 0
-                    border.color: Material.Theme.alpha("#000", 0.26)
+                    width: Units.dp(30)
+                    height: Units.dp(30)
+                    radius: Units.dp(2)
+                    color: Palette.colors[modelData]["500"]
+                    border.width: modelData === "white" ? Units.dp(2) : 0
+                    border.color: Theme.alpha("#000", 0.26)
 
-                    Material.Ink {
+                    Ink {
                         anchors.fill: parent
 
                         onPressed: {
@@ -212,7 +212,7 @@ Material.ApplicationWindow {
 
         Item {
 
-            Material.Sidebar {
+            Sidebar {
                 id: sidebar
 
                 expanded: !navDrawer.enabled
@@ -222,7 +222,7 @@ Material.ApplicationWindow {
 
                     Repeater {
                         model: section
-                        delegate: MaterialListItem.Standard {
+                        delegate: ListItem.Standard {
                             text: modelData
                             selected: modelData == selectedComponent
                             onClicked: selectedComponent = modelData
@@ -255,12 +255,12 @@ Material.ApplicationWindow {
                     }
                 }
 
-                Material.ProgressCircle {
+                ProgressCircle {
                     anchors.centerIn: parent
                     visible: example.status == Loader.Loading
                 }
             }
-            Material.Scrollbar {
+            Scrollbar {
                 flickableItem: flickable
             }
         }

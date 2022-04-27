@@ -1,12 +1,13 @@
 import QtQuick 2.4
-import Material 0.3 as Material
-import Material.ListItems 0.1 as MaterialListItem
+import Material 0.2
+import Material.ListItems 0.1 as ListItem
+import Material.Extras 0.1
 
 Item {
-    Material.View {
+    View {
         anchors {
             fill: parent
-            margins: dp(32)
+            margins: Units.dp(32)
         }
 
         elevation: 1
@@ -14,20 +15,20 @@ Item {
         Column {
             anchors.fill: parent
 
-            MaterialListItem.Subheader {
+            ListItem.Subheader {
                 text: "Section Subheader"
             }
 
-            MaterialListItem.Standard {
+            ListItem.Standard {
                 text: "Standard list item"
             }
 
-            MaterialListItem.Subtitled {
+            ListItem.Subtitled {
                 text: "Subtitled list item"
                 subText: "With some subtext!"
             }
 
-            MaterialListItem.Subtitled {
+            ListItem.Subtitled {
                 text: "Subtitled list item"
                 subText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec eleifend arcu, eu convallis nisi."
                 valueText: "2h ago"
@@ -35,24 +36,24 @@ Item {
                 maximumLineCount: 3
             }
 
-            MaterialListItem.Subtitled {
+            ListItem.Subtitled {
                 text: "Subtitled list item"
                 subText: "With some subtext, icon, and secondary item!"
-                secondaryItem: Material.Switch {
+                secondaryItem: Switch {
                     id: enablingSwitch
                     anchors.verticalCenter: parent.verticalCenter
                 }
 
                 onClicked: enablingSwitch.checked = !enablingSwitch.checked
 
-                action: Material.Icon {
+                action: Icon {
                     anchors.centerIn: parent
                     name: "device/access_alarm"
-                    size: dp(32)
+                    size: Units.dp(32)
                 }
             }
 
-            MaterialListItem.SimpleMenu {
+            ListItem.SimpleMenu {
                 text: "Subtitled list item"
                 model: ["A", "B and some long text that should not clip", "C"]
             }

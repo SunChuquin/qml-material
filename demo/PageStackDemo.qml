@@ -1,91 +1,91 @@
-import QtQuick 2.4 as Quick
-import Material 0.3 as Material
-import Material.Extras 0.1 as Extra
+import QtQuick 2.4
+import Material 0.2
+import Material.Extras 0.1
 
-Quick.Item {
+Item {
 
-    Quick.Column {
-        anchors.centerIn: parent
-        spacing: dp(20)
+	Column {
+		anchors.centerIn: parent
+		spacing: Units.dp(20)
 
-        Material.Button {
-            anchors.horizontalCenter: parent.horizontalCenter
+		Button {
+			anchors.horizontalCenter: parent.horizontalCenter
 
-            text: "Push subpage"
-            elevation: 1
-            onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
-        }
+		    text: "Push subpage"
+		    elevation: 1
+		    onClicked: pageStack.push(Qt.resolvedUrl("SubPage.qml"))
+		}
 
-        Material.Button {
-            anchors.horizontalCenter: parent.horizontalCenter
+		Button {
+			anchors.horizontalCenter: parent.horizontalCenter
 
-            text: "Push subpage with sidebar"
-            elevation: 1
-            onClicked: pageStack.push(Qt.resolvedUrl("SidebarPage.qml"))
-        }
+		    text: "Push subpage with sidebar"
+		    elevation: 1
+		    onClicked: pageStack.push(Qt.resolvedUrl("SidebarPage.qml"))
+		}
 
-        Quick.Image {
-            id: image
+		Image {
+			id: image
 
-            anchors.horizontalCenter: parent.horizontalCenter
+			anchors.horizontalCenter: parent.horizontalCenter
 
-            source: Qt.resolvedUrl("images/balloon.jpg")
-            width: dp(400)
-            height: dp(250)
+			source: Qt.resolvedUrl("images/balloon.jpg")
+			width: Units.dp(400)
+			height: Units.dp(250)
 
-            Material.Ink {
-                anchors.fill: parent
+			Ink {
+				anchors.fill: parent
 
-                onClicked: overlayView.open(image)
-            }
-        }
+				onClicked: overlayView.open(image)
+			}
+		}
 
-        Material.Label {
-            anchors.horizontalCenter: parent.horizontalCenter
+	    Label {
+	    	anchors.horizontalCenter: parent.horizontalCenter
 
-            style: "subheading"
-            color: Material.Theme.light.subTextColor
-            text: "Tap to edit picture"
-            font.italic: true
-        }
-    }
+	    	style: "subheading"
+	    	color: Theme.light.subTextColor
+	    	text: "Tap to edit picture"
+	    	font.italic: true
+	    }
+	}
 
-    Material.OverlayView {
-        id: overlayView
+	OverlayView {
+		id: overlayView
 
-        width: dp(800)
-        height: dp(500)
+		width: Units.dp(800)
+		height: Units.dp(500)
 
-        Quick.Image {
-            id: contentImage
-            source: Qt.resolvedUrl("images/balloon.jpg")
-            anchors.fill: parent
-        }
+		Image {
+			id: contentImage
+	    	source: Qt.resolvedUrl("images/balloon.jpg")
+	    	anchors.fill: parent
+	    }
 
-        Quick.Row {
-            anchors {
-                top: parent.top
-                right: parent.right
-                rightMargin: dp(16)
-            }
-            height: dp(48)
-            opacity: overlayView.transitionOpacity
+		Row {
+			anchors {
+				top: parent.top
+				right: parent.right
+				rightMargin: Units.dp(16)
+			}
+			height: Units.dp(48)
+			opacity: overlayView.transitionOpacity
 
-            spacing: dp(24)
+			spacing: Units.dp(24)
 
-            Quick.Repeater {
-                model: ["content/add", "image/edit", "action/delete"]
+	        Repeater {
+	            model: ["content/add", "image/edit", "action/delete"]
 
-                delegate: Material.IconButton {
-                    id: iconAction
+	            delegate: IconButton {
+	                id: iconAction
 
-                    iconName: modelData
+	                iconName: modelData
 
-                    color: Material.Theme.dark.iconColor
-                    size: iconName == "content/add" ? dp(27) : dp(24)
-                    anchors.verticalCenter: parent.verticalCenter
-                }
-            }
-        }
-    }
+	                color: Theme.dark.iconColor
+	                size: iconName == "content/add" ? Units.dp(27) : Units.dp(24)
+	                anchors.verticalCenter: parent.verticalCenter
+	            }
+	        }
+		}
+	}
 }
